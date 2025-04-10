@@ -42,3 +42,18 @@ function Main(){
     }
 }
 
+class RenderCards{
+    constructor(){
+        const card = document.createElement("div");
+        const picture = document.createElement("img");
+        const info = document.createElement("div");
+        const list = document.createElement("li");
+
+        card.classList.add("card")
+        card.appendChild(picture)
+        card.appendChild(info)
+        info.appendChild(list)
+
+    }
+
+}
