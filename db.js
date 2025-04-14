@@ -17,6 +17,7 @@ export const clubs = [
   },
 ];
 
+export const names = ["Denis", "Ronaldo", "James", "Martinez"];
 export const nations = ["Brazil", "England", "Germany", "Spain"];
 
 export const physics = {
@@ -65,4 +66,3 @@ export const formations = [
     ],
   },
 ];
-

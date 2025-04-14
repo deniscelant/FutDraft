@@ -6,11 +6,28 @@ window.addEventListener("DOMContentLoaded", () => {
     draft = false;
 })
 
+/* regra de negócio
+
+    sortear informações para a carta
+    mt
+    clube = clubs[mt].club
+    name = names[mt]
+    nations = nations[mt]
+
+*/
 
 class Draft{
     constructor(){
         renderFormations();
         renderLineUp();
+    }
+
+    renderFormations(){
+        const formationBoard = document.createElement("div");
+        db.formations.forEach(f => {
+            const formt = document.createElement("div")
+            formt.textContent = f.lines
+        })
     }
 }
 
