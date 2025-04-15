@@ -40,12 +40,13 @@ export const ZG = {
   strength: any,
   height: overNumber(1.75, 2.0),
   weight: overNumber(60, 120),
+
 }
 
 export const LDLE = {
   desarm: any,
   pass: overNumber(60,99),
-  dribble: any,
+  dribble: overNumber(10,60),
   shoot: overNumber(10,60),
   pace: overNumber(60,99),
   resistance: overNumber(60,99),
