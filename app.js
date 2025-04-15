@@ -41,7 +41,7 @@ class Draft {
   constructor() {
     renderFormations();
     renderLineUp();
-  }
+  } 
  
   renderFormations() {
     const formationBoard = document.createElement("div");
