@@ -34,17 +34,40 @@ class Player {
     this.nation = db.nations[any(db.nations)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
     this.cardStats = Object.create(db.position);
-    this.card = document.createElement("div");
+    this.card = document.createElement("img");
+    document.body.appendChild(card)
   }
   renderCard() {
-    const picture = document.createElement("img");
-    const info = document.createElement("div");
-    const list = document.createElement("li");
+    const info = document.createElement("div")
+    this.card.appendChild(info)
+    info.innerHTML = `
+      <div id="cardStats">
+          <ul>
+            <li>Pass</li>
+            <li id="pass_stat">${this.name}</li>
+            <li>Dribble</li>
+            <li id="dribble_stat">${this.name}</li>
+            <li>Desarm</li>
+            <li id="desarm_stat">99</li>
+            <li>Shoot</li>
+            <li id="shoot_stat">99</li>
+          </ul>
+        </div>
 
-    this.card.classList.add("card");
-    this.card.appendChild(picture);
-    this.card.appendChild(info);
-    info.appendChild(list);
+        <div id="cardPhysics">
+          <ul>
+            <li>Pace</li>
+            <li id="pace_stat">99</li>
+            <li>Resistance</li>
+            <li id="resistance_stat"> 99</li>
+            <li>Impulse</li>
+            <li id="impulse_stat">99</li>
+            <li>Strength</li>
+            <li id="strength_stat">99</li>
+          </ul>
+        </div>
+    `
+
   }
 }
 
@@ -62,3 +85,4 @@ function init() {
     throw console.error("Não há drafts iniciados.");
   }
 }
+
