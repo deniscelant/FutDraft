@@ -1,10 +1,19 @@
-import * as db from "./db";
+import * as db from "/db.js";
+
+let example = {
+  desarm: "any",
+  pass: "<60",
+  dribble: ">60",
+  shoot: "any",
+};
 
 let draft = false;
 
 window.addEventListener("DOMContentLoaded", () => {
   draft = false;
 });
+
+const any = Math.floor(Math.random() * 99);
 
 /* regra de negócio
 
@@ -18,9 +27,6 @@ window.addEventListener("DOMContentLoaded", () => {
     positions = ZG, LD, VOL, MC, MD, ME, MEI, SA, AT, PD, PE
     
     any = Math.floor(Math.random() * 99)
-    under60 = Math.floor(Math.random() * (60 - 10))
-    over60 = Math.floor(Math.random() * (99 - 60))
-
     
     var phys = [
         {   
@@ -35,14 +41,54 @@ window.addEventListener("DOMContentLoaded", () => {
 
 */
 
-console.log(Math.floor(Math.random() * 99))
-   
+function overNumber(min, max) {
+  const minNumber = Math.ceil(min);
+  const maxNumber = Math.floor(max);
+  return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
+}
+
+function genStats(position) {
+  let newPhysics = {
+    pace: 99,
+    resistance: 99,
+    impulse: 99,
+    strength: 99,
+    height: 1.99,
+    weight: 80,
+  };
+
+  let newStats = {
+    desarm: 99,
+    pass: 99,
+    dribble: 99,
+    shoot: 99,
+  };
+
+  
+  switch (position) {
+    case "ZG":
+      stats.desarm = overNumber(60, 99);
+      stats.pass = any;
+      stats.dribble = overNumber(10, 60);
+      stats.shoot = any;
+
+      physics.pace = overNumber(10, 60);
+      physics.resistance = overNumber(60, 99);
+      physics.impulse = overNumber(60, 99);
+      physics.strength = any;
+      physics.height = overNumber(1.75, 2.0);
+      physics.weight = any;
+  }
+}
+
+genStats();
+
 class Draft {
   constructor() {
     renderFormations();
     renderLineUp();
-  } 
- 
+  }
+
   renderFormations() {
     const formationBoard = document.createElement("div");
     db.formations.forEach((f) => {
