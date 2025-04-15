@@ -18,10 +18,13 @@ class Draft {
 
   renderFormations() {
     const formationBoard = document.createElement("div");
-    db.formations.forEach((f) => {
-      const formt = document.createElement("div");
-      formt.textContent = f.lines;
-    });
+    const formt = document.createElement("div");
+    document.body.appendChild(formationBoard)
+    formationBoard.appendChild(formt)
+
+    formt.textContent = f.lines;
+
+    //formation for f.lines
   }
 }
 
