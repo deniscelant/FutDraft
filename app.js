@@ -5,7 +5,7 @@ let draft = false;
 window.addEventListener("DOMContentLoaded", () => {
   draft = false;
 });
- 
+
 /* regra de negócio
 
     sortear informações para a carta
@@ -42,7 +42,7 @@ class Draft {
     renderFormations();
     renderLineUp();
   }
-
+ 
   renderFormations() {
     const formationBoard = document.createElement("div");
     db.formations.forEach((f) => {
