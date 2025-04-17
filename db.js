@@ -154,6 +154,7 @@ export let stats = {
 export const formations = [
   {
     name: "433",
+    img: "links/exp/433.png",
     lines: [
       ["PE", "CA", "PD"],
       ["MC", "MC", "MC"],
@@ -162,6 +163,7 @@ export const formations = [
   },
   {
     name: "442",
+    img: "links/exp/442.png",
     lines: [
       ["CA", "CA"],
       ["ME", "MC", "MC", "MD"],
@@ -170,6 +172,7 @@ export const formations = [
   },
   {
     name: "4231",
+    img: "links/exp/4231.png",
     lines: [
       ["CA"],
       ["ME", "MEI", "MD"],
@@ -179,6 +182,7 @@ export const formations = [
   },
   {
     name: "532",
+    img: "links/exp/532.png",
     lines: [
       ["CA", "CA"],
       ["MC", "MC", "MC"],

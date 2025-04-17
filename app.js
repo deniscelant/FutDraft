@@ -34,9 +34,6 @@ button.onclick = () => {
   const player = new Player();
   player.renderCard();
 };
-const any = (array) => {
-  Math.floor(Math.random() * array.length);
-};
 
 let draft = false;
 
@@ -44,21 +41,90 @@ window.addEventListener("DOMContentLoaded", () => {
   draft = false;
 });
 
+const lines = db.formations[0].lines;
+
+lines.forEach(line => {
+
+  for (var i = 0; i < lines.length; i++) {
+    for (var j = 0; j < lines[i].length; j++) {}
+    const cell = document.createElement("Button");
+    document.body.appendChild(cell);
+    cell.textContent = lines[i]
+  } 
+})
+// lines.forEach((line) => {
+//   const cell = document.createElement("Button");
+//   document.body.appendChild(cell);
+// });
+
+// for (var formation of db.formations) {
+//   for (var line of formation) {
+//     const cell = document.createElement("Button");
+//     const board = document.getElementById("board");
+//     board.appendChild(cell);
+//   }
+// }
 class Draft {
   constructor() {
-    renderFormations();
+    pickFormations();
     renderLineUp();
   }
 
-  renderFormations() {
-    const formationBoard = document.createElement("div");
-    const formt = document.createElement("div");
-    document.body.appendChild(formationBoard);
-    formationBoard.appendChild(formt);
+  pickFormations() {
+    db.formations.forEach((formation) => {
+      const formationBoard = document.createElement("div");
+      formationBoard.id = "board";
+      document.body.appendChild(formationBoard);
 
-    formt.textContent = f.lines;
+      formationBoard.innerHTML = `
+        <div>
+          <h1 id="formTittle">${formation.name}</h1>
+          <img id="formImage" src=${formation.img} alt="">
+        </div>
+      `;
+    });
+    this.renderLineUp();
+  }
 
-    //formation for f.lines
+  renderLineUp() {
+    button.onclick = () => {
+      const buttonText = button.textContent;
+
+      for (var formation of db.formations) {
+        for (var line of formation) {
+          const cell = document.createElement("Button");
+          const board = document.getElementById("board");
+          board.appendChild(cell);
+        }
+      }
+      switch (buttonText) {
+        case "ZG":
+          cardStats = Object.create(db.ZG);
+          break;
+        case "LDLE":
+          cardStats = Object.create(db.LDLE);
+          break;
+        case "VOL":
+          cardStats = Object.create(db.VOL);
+          break;
+        case "MC":
+          cardStats = Object.create(db.MC);
+          break;
+        case "MEMD":
+          cardStats = Object.create(db.MEMD);
+          break;
+        case "SAMEI":
+          cardStats = Object.create(db.SAMEI);
+          break;
+        case "PEPD":
+          cardStats = Object.create(db.PEPD);
+          break;
+        case "CA":
+          cardStats = Object.create(db.CA);
+      }
+      const player = new Player();
+      player.renderCard();
+    };
   }
 }
 
@@ -81,9 +147,11 @@ class Player {
   renderCard() {
     this.cardContent.innerHTML = `
     <div id ="playerCore">
-        <p class="playerInfo">${this.nome}</p>
-        <p class="playerInfo">${this.nation}</p>
-        <p class="playerInfo">${this.club}</p>
+        <div class="playerInfo">
+          <h1>${this.nome}</h1>
+          <p>${this.nation}</p>
+          <p>${this.club}</p>
+        </div>
     </div>
       <div id="info">
         <div id="infoStats">
