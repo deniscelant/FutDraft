@@ -1,8 +1,8 @@
 import * as db from "/db.js";
 
 let cardStats = {};
+let draft = false;
 
-const button = document.getElementById("btn");
 button.onclick = () => {
   const buttonText = button.textContent;
 
@@ -35,23 +35,21 @@ button.onclick = () => {
   player.renderCard();
 };
 
-let draft = false;
-
-window.addEventListener("DOMContentLoaded", () => {
-  draft = false;
-});
+//window.addEventListener("DOMContentLoaded", () => {
+//  draft = false;
+//});
 
 const lines = db.formations[0].lines;
 
-lines.forEach(line => {
-
-  for (var i = 0; i < lines.length; i++) {
-    for (var j = 0; j < lines[i].length; j++) {}
+for (var i = 0; i < lines.length; i++) {
+  for (var j = 0; j < lines[i].length; j++) {
     const cell = document.createElement("Button");
     document.body.appendChild(cell);
-    cell.textContent = lines[i]
-  } 
-})
+    let itName = lines[i][j];
+    cell.textContent = itName;
+    cell.id = itName;
+  }
+}
 // lines.forEach((line) => {
 //   const cell = document.createElement("Button");
 //   document.body.appendChild(cell);
@@ -67,7 +65,6 @@ lines.forEach(line => {
 class Draft {
   constructor() {
     pickFormations();
-    renderLineUp();
   }
 
   pickFormations() {
@@ -194,9 +191,5 @@ class PlayerPick {
 }
 
 function init() {
-  if (!draft) {
-    new Draft();
-  } else {
-    throw console.error("Não há drafts iniciados.");
-  }
+  new Draft();
 }
