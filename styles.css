@@ -68,3 +68,11 @@ ul {
   list-style: none;
   z-index: 2;
 }
+
+.board{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}

@@ -3,53 +3,75 @@ import * as db from "/db.js";
 let cardStats = {};
 let draft = false;
 
-button.onclick = () => {
-  const buttonText = button.textContent;
+// button.onclick = () => {
+//   const buttonText = button.textContent;
 
-  switch (buttonText) {
-    case "ZG":
-      cardStats = Object.create(db.ZG);
-      break;
-    case "LDLE":
-      cardStats = Object.create(db.LDLE);
-      break;
-    case "VOL":
-      cardStats = Object.create(db.VOL);
-      break;
-    case "MC":
-      cardStats = Object.create(db.MC);
-      break;
-    case "MEMD":
-      cardStats = Object.create(db.MEMD);
-      break;
-    case "SAMEI":
-      cardStats = Object.create(db.SAMEI);
-      break;
-    case "PEPD":
-      cardStats = Object.create(db.PEPD);
-      break;
-    case "CA":
-      cardStats = Object.create(db.CA);
-  }
-  const player = new Player();
-  player.renderCard();
-};
+//   switch (buttonText) {
+//     case "ZG":
+//       cardStats = Object.create(db.ZG);
+//       break;
+//     case "LDLE":
+//       cardStats = Object.create(db.LDLE);
+//       break;
+//     case "VOL":
+//       cardStats = Object.create(db.VOL);
+//       break;
+//     case "MC":
+//       cardStats = Object.create(db.MC);
+//       break;
+//     case "MEMD":
+//       cardStats = Object.create(db.MEMD);
+//       break;
+//     case "SAMEI":
+//       cardStats = Object.create(db.SAMEI);
+//       break;
+//     case "PEPD":
+//       cardStats = Object.create(db.PEPD);
+//       break;
+//     case "CA":
+//       cardStats = Object.create(db.CA);
+//   }
+//   const player = new Player();
+//   player.renderCard();
+// };
 
 //window.addEventListener("DOMContentLoaded", () => {
 //  draft = false;
 //});
 
-const lines = db.formations[0].lines;
+function drawPositions(){
 
-for (var i = 0; i < lines.length; i++) {
-  for (var j = 0; j < lines[i].length; j++) {
-    const cell = document.createElement("Button");
-    document.body.appendChild(cell);
-    let itName = lines[i][j];
-    cell.textContent = itName;
-    cell.id = itName;
+  const lines = db.formations[0].lines;
+  
+  for (var i = 0; i < lines.length; i++) {
+    for (var j = 0; j < lines[i].length; j++) {
+      const cell = document.createElement("Button");
+      document.body.appendChild(cell);
+      let itName = lines[i][j];
+      cell.textContent = itName;
+      cell.id = itName;
+    }
   }
 }
+
+function pickFormations() {
+  db.formations.forEach((formation) => {
+    const formationBoard = document.createElement("div");
+    formationBoard.id = "board";
+    document.body.appendChild(formationBoard);
+
+    formationBoard.innerHTML = `
+      <div>
+        <h1 id="formTittle">${formation.name}</h1>
+        <img id="formImage" src=${formation.img} alt="">
+      </div>
+    `;
+  })
+}
+
+pickFormations()
+
+
 // lines.forEach((line) => {
 //   const cell = document.createElement("Button");
 //   document.body.appendChild(cell);
@@ -62,6 +84,7 @@ for (var i = 0; i < lines.length; i++) {
 //     board.appendChild(cell);
 //   }
 // }
+
 class Draft {
   constructor() {
     pickFormations();
