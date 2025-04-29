@@ -1,0 +1,20 @@
+/* 433 */
+#CA, #AL, #AR, #SA, #PE, #PD {
+  grid-area: attack;
+}
+
+#ME, #MC, #MD, #MEI {
+  grid-area: mid;
+}
+
+#LE, #LD, #ZG {
+  grid-area: def;
+}
+
+._433 {
+    display: grid;
+    grid:
+      'attack attack'
+      'menu main main main right right'
+      'menu footer footer footer footer';
+  }

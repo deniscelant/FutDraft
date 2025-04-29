@@ -169,6 +169,7 @@ export const formations = [
       ["ME", "MC", "MC", "MD"],
       ["LE", "ZG", "ZG", "LD"],
     ],
+
   },
   {
     name: "4231",
@@ -178,7 +179,8 @@ export const formations = [
       ["ME", "MEI", "MD"],
       ["MC", "MC"],
       ["LE", "ZG", "ZG", "LD"],
-    ]
+    ],
+
   },
   {
     name: "532",
@@ -188,5 +190,6 @@ export const formations = [
       ["MC", "MC", "MC"],
       ["LE", "ZG", "ZG", "ZG", "LD"],
     ],
+
   },
 ];

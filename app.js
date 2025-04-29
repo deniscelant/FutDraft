@@ -5,7 +5,6 @@ let draft = false;
 // let eventTarget = event.target.id;
 let lines = db.formations[0].lines;
 
-
 // button.onclick = () => {
 //   const buttonText = button.textContent;
 
@@ -42,8 +41,7 @@ let lines = db.formations[0].lines;
 //  draft = false;
 //});
 
-function drawPositions(){
-
+function drawPositions() {
   // const formFind = db.formations.find(f => f.name === eventTarget)
   for (var i = 0; i < lines.length; i++) {
     for (var j = 0; j < lines[i].length; j++) {
@@ -59,28 +57,27 @@ function drawPositions(){
 function pickFormations() {
   db.formations.forEach((formation) => {
     const formationBoard = document.createElement("div");
-    formationBoard.id = "board";
+    formationBoard.classList.add("board")
     document.body.appendChild(formationBoard);
 
     formationBoard.innerHTML = `
-      <div id="${formation.name}">
+      <div id="${formation.name}" class="formDiv">
         <h1 id="formTittle">${formation.name}</h1>
         <img id="formImage" src=${formation.img} alt="">
       </div>
     `;
+  });
+}
 
+function removePickFormations(){
+  const formationBoard = document.querySelectorAll(".board")
+  formationBoard.forEach(frm => {
+    frm.remove()
   })
-}
 
+
+}
 pickFormations();
-
-
-(function(e) { 
-  
-  e.currentTarget.onclick = () => {
-    console.log(e.currentTarget.id)
-}
-})();
 
 class Draft {
   constructor() {
@@ -198,7 +195,7 @@ class Player {
           </div>
           
       </div>
-
+ 
     `;
   }
 }
@@ -214,28 +211,42 @@ function init() {
   new Draft();
 }
 
-class eventController{
-  constructor(){
-    
+class EventController {
+  constructor() {}
+
+  controller_formations() {
+    // const formDiv = document.getElementsByClassName("formDiv")
+    const divs = document.querySelectorAll("div");
+    const formationBoard = document.getElementById("board")
+    divs.forEach((div) => {
+      div.onclick = () => {
+        switch (div.id) {
+          case "433":
+            lines = db.formations[0].lines;
+            drawPositions()
+            break;
+          case "442":
+            lines = db.formations[1].lines;
+            drawPositions()
+
+            break;
+          case "4231":
+            lines = db.formations[2].lines;
+            drawPositions()
+
+            break;
+          case "532":
+            lines = db.formations[3].lines;
+            drawPositions()
+
+            break;
+        }
+        removePickFormations()
+
+      };
+    });
   }
 }
 
-function eventController(e){
-  
-  // PICK FORMATIONS
-  switch(e.target.id){
-    case "433":
-    lines = db.formations[0].lines;
-    break;
-    case "422":
-    lines = db.formations[1].lines;
-    break;
-    case "4231":
-    lines = db.formations[2].lines;
-    break;
-    case "532":
-    lines = db.formations[3].lines;
-    break;
-  }
-  
-}
+const eventController = new EventController();
+eventController.controller_formations();
