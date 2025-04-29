@@ -2,6 +2,9 @@ import * as db from "/db.js";
 
 let cardStats = {};
 let draft = false;
+// let eventTarget = event.target.id;
+let lines = db.formations[0].lines;
+
 
 // button.onclick = () => {
 //   const buttonText = button.textContent;
@@ -41,8 +44,7 @@ let draft = false;
 
 function drawPositions(){
 
-  const lines = db.formations[0].lines;
-  
+  // const formFind = db.formations.find(f => f.name === eventTarget)
   for (var i = 0; i < lines.length; i++) {
     for (var j = 0; j < lines[i].length; j++) {
       const cell = document.createElement("Button");
@@ -61,29 +63,24 @@ function pickFormations() {
     document.body.appendChild(formationBoard);
 
     formationBoard.innerHTML = `
-      <div>
+      <div id="${formation.name}">
         <h1 id="formTittle">${formation.name}</h1>
         <img id="formImage" src=${formation.img} alt="">
       </div>
     `;
+
   })
 }
 
-pickFormations()
+pickFormations();
 
 
-// lines.forEach((line) => {
-//   const cell = document.createElement("Button");
-//   document.body.appendChild(cell);
-// });
-
-// for (var formation of db.formations) {
-//   for (var line of formation) {
-//     const cell = document.createElement("Button");
-//     const board = document.getElementById("board");
-//     board.appendChild(cell);
-//   }
-// }
+(function(e) { 
+  
+  e.currentTarget.onclick = () => {
+    console.log(e.currentTarget.id)
+}
+})();
 
 class Draft {
   constructor() {
@@ -215,4 +212,30 @@ class PlayerPick {
 
 function init() {
   new Draft();
+}
+
+class eventController{
+  constructor(){
+    
+  }
+}
+
+function eventController(e){
+  
+  // PICK FORMATIONS
+  switch(e.target.id){
+    case "433":
+    lines = db.formations[0].lines;
+    break;
+    case "422":
+    lines = db.formations[1].lines;
+    break;
+    case "4231":
+    lines = db.formations[2].lines;
+    break;
+    case "532":
+    lines = db.formations[3].lines;
+    break;
+  }
+  
 }
