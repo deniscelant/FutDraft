@@ -77,7 +77,7 @@ function removePickFormations(){
 
 
 }
-pickFormations();
+// pickFormations();
 
 class Draft {
   constructor() {
