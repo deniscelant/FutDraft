@@ -1,104 +1,109 @@
 import * as db from "/db.js";
 
 let cardStats = {};
-let draft = false;
-// let eventTarget = event.target.id;
+let isDraft = false;
 let lines = db.formations[0].lines;
 
-// button.onclick = () => {
-//   const buttonText = button.textContent;
-
-//   switch (buttonText) {
-//     case "ZG":
-//       cardStats = Object.create(db.ZG);
-//       break;
-//     case "LDLE":
-//       cardStats = Object.create(db.LDLE);
-//       break;
-//     case "VOL":
-//       cardStats = Object.create(db.VOL);
-//       break;
-//     case "MC":
-//       cardStats = Object.create(db.MC);
-//       break;
-//     case "MEMD":
-//       cardStats = Object.create(db.MEMD);
-//       break;
-//     case "SAMEI":
-//       cardStats = Object.create(db.SAMEI);
-//       break;
-//     case "PEPD":
-//       cardStats = Object.create(db.PEPD);
-//       break;
-//     case "CA":
-//       cardStats = Object.create(db.CA);
-//   }
-//   const player = new Player();
-//   player.renderCard();
-// };
-
-//window.addEventListener("DOMContentLoaded", () => {
-//  draft = false;
-//});
-
-function drawPositions() {
-  // const formFind = db.formations.find(f => f.name === eventTarget)
-  for (var i = 0; i < lines.length; i++) {
-    for (var j = 0; j < lines[i].length; j++) {
-      const cell = document.createElement("Button");
-      document.body.appendChild(cell);
-      let itName = lines[i][j];
-      cell.textContent = itName;
-      cell.id = itName;
-    }
-  }
-}
-
-function pickFormations() {
-  db.formations.forEach((formation) => {
-    const formationBoard = document.createElement("div");
-    formationBoard.classList.add("board")
-    document.body.appendChild(formationBoard);
-
-    formationBoard.innerHTML = `
-      <div id="${formation.name}" class="formDiv">
-        <h1 id="formTittle">${formation.name}</h1>
-        <img id="formImage" src=${formation.img} alt="">
-      </div>
-    `;
-  });
-}
-
-function removePickFormations(){
-  const formationBoard = document.querySelectorAll(".board")
-  formationBoard.forEach(frm => {
-    frm.remove()
-  })
-
-
-}
-// pickFormations();
-
 class Draft {
-  constructor() {
-    pickFormations();
-  }
+  constructor() {}
 
   pickFormations() {
     db.formations.forEach((formation) => {
       const formationBoard = document.createElement("div");
-      formationBoard.id = "board";
+      formationBoard.classList.add("board");
       document.body.appendChild(formationBoard);
 
       formationBoard.innerHTML = `
-        <div>
+        <div id="${formation.name}" class="formDiv">
           <h1 id="formTittle">${formation.name}</h1>
           <img id="formImage" src=${formation.img} alt="">
         </div>
       `;
     });
-    this.renderLineUp();
   }
+
+  drawPositions() {
+    const draft = new Draft();
+
+    for (var i = 0; i < lines.length; i++) {
+      for (var j = 0; j < lines[i].length; j++) {
+        const cell = document.createElement("Button");
+        const attackDiv = document.createElement("Div");
+        const midDiv = document.createElement("midDiv");
+        const defDiv = document.createElement("defDiv");
+
+        cell.id = "cell";
+        document.body.appendChild(cell)
+        let itName = lines[i][j];
+        cell.textContent = itName;
+        cell.id = itName;
+        switch (itName) {
+          case "PE":
+          case "CA":
+          case "PD":
+            attackDiv.appendChild(cell);
+            cell.classList.add("attack");
+            break;
+          case "ME":
+          case "MD":
+          case "MC":
+          case "SA":
+          case "MEI":
+            cell.classList.add("mid");
+            midDiv.appendChild(cell);
+            break;
+          case "LE":
+          case "ZG":
+          case "LD":
+            cell.classList.add("def");
+            defDiv.appendChild(cell);
+            break;
+        }
+        // draft.styleFormation();
+      }
+    }
+  }
+
+  // styleFormation() {
+  //   const cell = document.querySelectorAll(".cell");
+  //   cell.forEach((c) => {
+  //     switch (c.id) {
+  //       case "PE":
+  //         c.classList.add("attack");
+  //         break;
+  //       case "CA":
+  //         c.classList.add("attack");
+  //         break;
+  //       case "PD":
+  //         c.classList.add("attack");
+  //         break;
+  //       case "ME":
+  //         c.classList.add("mid");
+  //         break;
+  //       case "MD":
+  //         c.classList.add("mid");
+  //         break;
+  //       case "MC":
+  //         c.classList.add("mid");
+  //         break;
+  //       case "SA":
+  //         c.classList.add("mid");
+  //         break;
+  //       case "MEI":
+  //         c.classList.add("mid");
+  //         break;
+  //       case "LE":
+  //         c.classList.add("def");
+  //         break;
+  //       case "ZG":
+  //         c.classList.add("def");
+  //         break;
+  //       case "LD":
+  //         c.classList.add("def");
+  //         break;
+  //     }
+  //   });
+  // }
 
   renderLineUp() {
     button.onclick = () => {
@@ -139,6 +144,12 @@ class Draft {
       const player = new Player();
       player.renderCard();
     };
+  }
+  removePickFormations() {
+    const formationBoard = document.querySelectorAll(".board");
+    formationBoard.forEach((frm) => {
+      frm.remove();
+    });
   }
 }
 
@@ -208,45 +219,47 @@ class PlayerPick {
 }
 
 function init() {
-  new Draft();
+  const draft = new Draft();
+  draft.pickFormations();
 }
 
 class EventController {
   constructor() {}
 
   controller_formations() {
-    // const formDiv = document.getElementsByClassName("formDiv")
+    const draft = new Draft();
+
     const divs = document.querySelectorAll("div");
-    const formationBoard = document.getElementById("board")
+    const formationBoard = document.getElementById("board");
     divs.forEach((div) => {
       div.onclick = () => {
         switch (div.id) {
           case "433":
             lines = db.formations[0].lines;
-            drawPositions()
+            draft.drawPositions();
             break;
           case "442":
             lines = db.formations[1].lines;
-            drawPositions()
+            draft.drawPositions();
 
             break;
           case "4231":
             lines = db.formations[2].lines;
-            drawPositions()
+            draft.drawPositions();
 
             break;
           case "532":
             lines = db.formations[3].lines;
-            drawPositions()
+            draft.drawPositions();
 
             break;
         }
-        removePickFormations()
-
+        draft.removePickFormations();
       };
     });
   }
 }
 
+init();
 const eventController = new EventController();
 eventController.controller_formations();
