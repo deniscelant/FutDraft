@@ -27,17 +27,22 @@ class Draft {
 
     for (var i = 0; i < lines.length; i++) {
       for (var j = 0; j < lines[i].length; j++) {
+        const LineUp = document.querySelector(".LineUp")
         const cell = document.createElement("Button");
-        const attackDiv = document.createElement("Div");
-        const midDiv = document.createElement("midDiv");
-        const defDiv = document.createElement("defDiv");
+        const attackDiv = document.createElement("div");
+        const midDiv = document.createElement("div");
+        const defDiv = document.createElement("div");
 
         cell.id = "cell";
-        document.body.appendChild(cell)
+        // document.body.appendChild(cell)
+        
+        LineUp.appendChild(attackDiv)
+        LineUp.appendChild(midDiv)
+        LineUp.appendChild(defDiv)
         let itName = lines[i][j];
         cell.textContent = itName;
         cell.id = itName;
-        switch (itName) {
+        switch (cell.id) {
           case "PE":
           case "CA":
           case "PD":
