@@ -19,6 +19,8 @@
 .LineUp{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 ._433 {
@@ -43,7 +45,7 @@
     font-family: "Space Grotesk";
     font-weight: 700;
   }
-
+/* 
 #PE{transform: translateX(-10px);}
 #PD{transform: translateX(10px);}
 #CA{transform: translateY(3px);}
@@ -53,4 +55,4 @@
 #LE{transform: translateX(-5px);}
 #LD{transform: translateX(5px);}
 #ZGE{transform: translateY(5px);}#ZGE{transform: translateX(-2px);}
-#ZGD{transform: translateY(5px);}#ZGD{transform: translateX(2px);}
+#ZGD{transform: translateY(5px);}#ZGD{transform: translateX(2px);} */

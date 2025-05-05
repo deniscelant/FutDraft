@@ -1,5 +1,10 @@
 import * as db from "/db.js";
 
+// window.addEventListener("DOMContentLoaded", () => {
+//   const playerPick = new PlayerPick();
+//   playerPick.cap = true;
+// });
+
 let cardStats = {};
 let isDraft = false;
 let lines = db.formations[0].lines;
@@ -27,18 +32,15 @@ class Draft {
 
     for (var i = 0; i < lines.length; i++) {
       for (var j = 0; j < lines[i].length; j++) {
-        const LineUp = document.querySelector(".LineUp")
         const cell = document.createElement("Button");
-        const attackDiv = document.createElement("div");
-        const midDiv = document.createElement("div");
-        const defDiv = document.createElement("div");
+        const attackDiv = document.getElementById("attackDiv");
+        const midDiv = document.getElementById("midDiv");
+        const defDiv = document.getElementById("defDiv");
+        const midDefDiv = document.getElementById("midDefDiv");
 
         cell.id = "cell";
         // document.body.appendChild(cell)
-        
-        LineUp.appendChild(attackDiv)
-        LineUp.appendChild(midDiv)
-        LineUp.appendChild(defDiv)
+
         let itName = lines[i][j];
         cell.textContent = itName;
         cell.id = itName;
@@ -50,13 +52,16 @@ class Draft {
             cell.classList.add("attack");
             break;
           case "ME":
-          case "MD":
           case "MC":
           case "SA":
           case "MEI":
             cell.classList.add("mid");
             midDiv.appendChild(cell);
             break;
+          case "MD":
+            cell.classList.add("mid");
+            midDefDiv.appendChild(cell);
+
           case "LE":
           case "ZG":
           case "LD":
@@ -170,7 +175,8 @@ class Player {
     this.cardContent = document.createElement("div");
     this.cardContent.id = "cardContent";
 
-    document.body.appendChild(this.card);
+    const cardSlot = document.getElementById("cardSlot");
+    cardSlot.appendChild(this.card);
     this.card.appendChild(this.cardContent);
   }
 
@@ -217,9 +223,46 @@ class Player {
 }
 
 class PlayerPick {
-  constructor(players, cap) {
-    players = this.players;
-    cap = this.cap;
+  constructor() {
+    const playerPickDiv = document.createElement("div");
+    document.body.appendChild(playerPickDiv);
+    // if(cap){
+    //   switch (buttonText) {
+    //     case "ZG":
+    //       cardStats = Object.create(db.ZGPLUS);
+    //       break;
+    //     case "LDLE":
+    //       cardStats = Object.create(db.LDLE);
+    //       break;
+    //     case "VOL":
+    //       cardStats = Object.create(db.VOL);
+    //       break;
+    //     case "MC":
+    //       cardStats = Object.create(db.MC);
+    //       break;
+    //     case "MEMD":
+    //       cardStats = Object.create(db.MEMD);
+    //       break;
+    //     case "SAMEI":
+    //       cardStats = Object.create(db.SAMEI);
+    //       break;
+    //     case "PEPD":
+    //       cardStats = Object.create(db.PEPD);
+    //       break;
+    //     case "CA":
+    //       cardStats = Object.create(db.CA);
+    //       normalPick()
+    //   }
+
+    // }
+    for (var i = 0; i < 5; i++) {
+      const cardSlot = document.createElement("div");
+      cardSlot.id = "cardSlot";
+      playerPickDiv.appendChild(cardSlot);
+      const player = new Player();
+      player.renderCard();
+    }
+    this.cap = false;
   }
 }
 
@@ -260,6 +303,70 @@ class EventController {
             break;
         }
         draft.removePickFormations();
+        this.controller_playerPick();
+      };
+    });
+  }
+
+  controller_cardCreation() {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      button.onclick = () => {
+        const buttonText = button.textContent;
+
+        switch (buttonText) {
+          case "ZG":
+            cardStats = Object.create(db.ZG);
+            break;
+          case "LDLE":
+            cardStats = Object.create(db.LDLE);
+            break;
+          case "VOL":
+            cardStats = Object.create(db.VOL);
+            break;
+          case "MC":
+            cardStats = Object.create(db.MC);
+            break;
+          case "MEMD":
+            cardStats = Object.create(db.MEMD);
+            break;
+          case "SAMEI":
+            cardStats = Object.create(db.SAMEI);
+            break;
+          case "PEPD":
+            cardStats = Object.create(db.PEPD);
+            break;
+          case "CA":
+            cardStats = Object.create(db.CA);
+        }
+        const player = new Player();
+        player.renderCard();
+      };
+    });
+  }
+
+  controller_playerPick() {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      button.onclick = () => {
+        let buttonText = button.textContent;
+        console.log(buttonText);
+        switch (buttonText) {
+          case "ZG":
+            // case "LD":
+            // case "LE":
+            // case "VOL":
+            // case "MC":
+            // case "ME":
+            // case "MD":
+            // case "SA":
+            // case "MEI":
+            // case "PE":
+            // case "PD":
+            // case "CA":
+            const playerPick = new PlayerPick();
+            break;
+        }
       };
     });
   }
