@@ -74,87 +74,6 @@ class Draft {
     }
   }
 
-  // styleFormation() {
-  //   const cell = document.querySelectorAll(".cell");
-  //   cell.forEach((c) => {
-  //     switch (c.id) {
-  //       case "PE":
-  //         c.classList.add("attack");
-  //         break;
-  //       case "CA":
-  //         c.classList.add("attack");
-  //         break;
-  //       case "PD":
-  //         c.classList.add("attack");
-  //         break;
-  //       case "ME":
-  //         c.classList.add("mid");
-  //         break;
-  //       case "MD":
-  //         c.classList.add("mid");
-  //         break;
-  //       case "MC":
-  //         c.classList.add("mid");
-  //         break;
-  //       case "SA":
-  //         c.classList.add("mid");
-  //         break;
-  //       case "MEI":
-  //         c.classList.add("mid");
-  //         break;
-  //       case "LE":
-  //         c.classList.add("def");
-  //         break;
-  //       case "ZG":
-  //         c.classList.add("def");
-  //         break;
-  //       case "LD":
-  //         c.classList.add("def");
-  //         break;
-  //     }
-  //   });
-  // }
-
-  renderLineUp() {
-    button.onclick = () => {
-      const buttonText = button.textContent;
-
-      for (var formation of db.formations) {
-        for (var line of formation) {
-          const cell = document.createElement("Button");
-          const board = document.getElementById("board");
-          board.appendChild(cell);
-        }
-      }
-      switch (buttonText) {
-        case "ZG":
-          cardStats = Object.create(db.ZG);
-          break;
-        case "LDLE":
-          cardStats = Object.create(db.LDLE);
-          break;
-        case "VOL":
-          cardStats = Object.create(db.VOL);
-          break;
-        case "MC":
-          cardStats = Object.create(db.MC);
-          break;
-        case "MEMD":
-          cardStats = Object.create(db.MEMD);
-          break;
-        case "SAMEI":
-          cardStats = Object.create(db.SAMEI);
-          break;
-        case "PEPD":
-          cardStats = Object.create(db.PEPD);
-          break;
-        case "CA":
-          cardStats = Object.create(db.CA);
-      }
-      const player = new Player();
-      player.renderCard();
-    };
-  }
   removePickFormations() {
     const formationBoard = document.querySelectorAll(".board");
     formationBoard.forEach((frm) => {
@@ -308,63 +227,91 @@ class EventController {
     });
   }
 
-  controller_cardCreation() {
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach((button) => {
-      button.onclick = () => {
-        const buttonText = button.textContent;
+  // controller_cardCreation() {
+  //   const buttons = document.querySelectorAll("button");
+  //   buttons.forEach((button) => {
+  //     button.onclick = () => {
+  //       const buttonText = button.textContent;
 
-        switch (buttonText) {
-          case "ZG":
-            cardStats = Object.create(db.ZG);
-            break;
-          case "LDLE":
-            cardStats = Object.create(db.LDLE);
-            break;
-          case "VOL":
-            cardStats = Object.create(db.VOL);
-            break;
-          case "MC":
-            cardStats = Object.create(db.MC);
-            break;
-          case "MEMD":
-            cardStats = Object.create(db.MEMD);
-            break;
-          case "SAMEI":
-            cardStats = Object.create(db.SAMEI);
-            break;
-          case "PEPD":
-            cardStats = Object.create(db.PEPD);
-            break;
-          case "CA":
-            cardStats = Object.create(db.CA);
-        }
-        const player = new Player();
-        player.renderCard();
-      };
-    });
-  }
+  //       switch (buttonText) {
+  //         case "ZG":
+  //           cardStats = Object.create(db.ZG);
+  //           break;
+  //         case "LDLE":
+  //           cardStats = Object.create(db.LDLE);
+  //           break;
+  //         case "VOL":
+  //           cardStats = Object.create(db.VOL);
+  //           break;
+  //         case "MC":
+  //           cardStats = Object.create(db.MC);
+  //           break;
+  //         case "MEMD":
+  //           cardStats = Object.create(db.MEMD);
+  //           break;
+  //         case "SAMEI":
+  //           cardStats = Object.create(db.SAMEI);
+  //           break;
+  //         case "PEPD":
+  //           cardStats = Object.create(db.PEPD);
+  //           break;
+  //         case "CA":
+  //           cardStats = Object.create(db.CA);
+  //       }
+  //       const player = new Player();
+  //       player.renderCard();
+  //     };
+  //   });
+  // }
 
   controller_playerPick() {
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
       button.onclick = () => {
         let buttonText = button.textContent;
-        console.log(buttonText);
         switch (buttonText) {
           case "ZG":
-            // case "LD":
-            // case "LE":
-            // case "VOL":
-            // case "MC":
-            // case "ME":
-            // case "MD":
-            // case "SA":
-            // case "MEI":
-            // case "PE":
-            // case "PD":
-            // case "CA":
-            const playerPick = new PlayerPick();
+            cardStats = Object.create(db.ZG);
+            new PlayerPick();
+            break;
+
+          case "LD":
+          case "LE":
+            cardStats = Object.create(db.LDLE);
+            new PlayerPick();
+            break;
+
+          case "VOL":
+            cardStats = Object.create(db.VOL);
+            new PlayerPick();
+            break;
+
+          case "MC":
+            cardStats = Object.create(db.MC);
+            new PlayerPick();
+            break;
+
+          case "ME":
+          case "MD":
+            cardStats = Object.create(db.MEMD);
+            new PlayerPick();
+            break;
+
+          case "SA":
+          case "MEI":
+            cardStats = Object.create(db.SAMEI);
+            new PlayerPick();
+            break;
+
+          case "PE":
+          case "PD":
+            cardStats = Object.create(db.PEPD);
+            new PlayerPick();
+            break;
+
+          case "CA":
+            cardStats = Object.create(db.CA);
+            new PlayerPick();
             break;
         }
       };
