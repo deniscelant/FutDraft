@@ -263,7 +263,7 @@ class EventController {
   //     };
   //   });
   // }
-
+ 
   controller_playerPick() {
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
