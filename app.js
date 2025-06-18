@@ -1,16 +1,14 @@
 import * as db from "/db.js";
 
-// window.addEventListener("DOMContentLoaded", () => {
-//   const playerPick = new PlayerPick();
-//   playerPick.cap = true;
-// });
-
 let cardStats = {};
 let isDraft = false;
 let lines = db.formations[0].lines;
 
 class Draft {
-  constructor() {}
+  constructor() {
+    this.pickFormations();
+    this.Events();
+  }
 
   pickFormations() {
     db.formations.forEach((formation) => {
@@ -28,8 +26,6 @@ class Draft {
   }
 
   drawPositions() {
-    const draft = new Draft();
-
     for (var i = 0; i < lines.length; i++) {
       for (var j = 0; j < lines[i].length; j++) {
         const cell = document.createElement("Button");
@@ -39,7 +35,6 @@ class Draft {
         const midDefDiv = document.getElementById("midDefDiv");
 
         cell.id = "cell";
-        // document.body.appendChild(cell)
 
         let itName = lines[i][j];
         cell.textContent = itName;
@@ -69,7 +64,6 @@ class Draft {
             defDiv.appendChild(cell);
             break;
         }
-        // draft.styleFormation();
       }
     }
   }
@@ -80,6 +74,88 @@ class Draft {
       frm.remove();
     });
   }
+
+  Events() {
+    const divs = document.querySelectorAll("div");
+    divs.forEach((div) => {
+      div.onclick = () => {
+        switch (div.id) {
+          case "433":
+            lines = db.formations[0].lines;
+            this.drawPositions();
+            break;
+          case "442":
+            lines = db.formations[1].lines;
+            this.drawPositions();
+
+            break;
+          case "4231":
+            lines = db.formations[2].lines;
+            this.drawPositions();
+
+            break;
+          case "532":
+            lines = db.formations[3].lines;
+            this.drawPositions();
+
+            break;
+        }
+        this.removePickFormations();
+      };
+    });
+
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      button.onclick = () => {
+        let buttonText = button.textContent;
+        switch (buttonText) {
+          case "ZG":
+            cardStats = Object.create(db.ZG);
+            new Player();
+            break;
+
+          case "LD":
+          case "LE":
+            cardStats = Object.create(db.LDLE);
+            new Player();
+            break;
+
+          case "VOL":
+            cardStats = Object.create(db.VOL);
+            new Player();
+            break;
+
+          case "MC":
+            cardStats = Object.create(db.MC);
+            new Player();
+            break;
+
+          case "ME":
+          case "MD":
+            cardStats = Object.create(db.MEMD);
+            new Player();
+            break;
+
+          case "SA":
+          case "MEI":
+            cardStats = Object.create(db.SAMEI);
+            new Player();
+            break;
+
+          case "PE":
+          case "PD":
+            cardStats = Object.create(db.PEPD);
+            new Player();
+            break;
+
+          case "CA":
+            cardStats = Object.create(db.CA);
+            new Player();
+            break;
+        }
+      };
+    });
+  }
 }
 
 class Player {
@@ -88,19 +164,13 @@ class Player {
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
     this.posDB = cardStats;
-    this.card = document.createElement("div");
-    this.card.id = "card";
 
-    this.cardContent = document.createElement("div");
-    this.cardContent.id = "cardContent";
-
-    const cardSlot = document.getElementById("cardSlot");
-    cardSlot.appendChild(this.card);
-    this.card.appendChild(this.cardContent);
+    this.Events();
+    this.PlayerPick();
   }
 
   renderCard() {
-    this.cardContent.innerHTML = `
+    return `
     <div id ="playerCore">
         <div class="playerInfo">
           <h1>${this.nome}</h1>
@@ -139,186 +209,18 @@ class Player {
  
     `;
   }
-}
 
-class PlayerPick {
-  constructor() {
-    const playerPickDiv = document.createElement("div");
-    document.body.appendChild(playerPickDiv);
-    // if(cap){
-    //   switch (buttonText) {
-    //     case "ZG":
-    //       cardStats = Object.create(db.ZGPLUS);
-    //       break;
-    //     case "LDLE":
-    //       cardStats = Object.create(db.LDLE);
-    //       break;
-    //     case "VOL":
-    //       cardStats = Object.create(db.VOL);
-    //       break;
-    //     case "MC":
-    //       cardStats = Object.create(db.MC);
-    //       break;
-    //     case "MEMD":
-    //       cardStats = Object.create(db.MEMD);
-    //       break;
-    //     case "SAMEI":
-    //       cardStats = Object.create(db.SAMEI);
-    //       break;
-    //     case "PEPD":
-    //       cardStats = Object.create(db.PEPD);
-    //       break;
-    //     case "CA":
-    //       cardStats = Object.create(db.CA);
-    //       normalPick()
-    //   }
-
-    // }
+  PlayerPick() {
+    const playersWindow = document.createElement("div");
+    document.body.appendChild(playersWindow);
     for (var i = 0; i < 5; i++) {
       const cardSlot = document.createElement("div");
       cardSlot.id = "cardSlot";
-      playerPickDiv.appendChild(cardSlot);
-      const player = new Player();
-      player.renderCard();
+      cardSlot.innerHTML = this.renderCard();
+      playersWindow.appendChild(cardSlot);
     }
-    this.cap = false;
-  }
-}
-
-function init() {
-  const draft = new Draft();
-  draft.pickFormations();
-}
-
-class EventController {
-  constructor() {}
-
-  controller_formations() {
-    const draft = new Draft();
-
-    const divs = document.querySelectorAll("div");
-    const formationBoard = document.getElementById("board");
-    divs.forEach((div) => {
-      div.onclick = () => {
-        switch (div.id) {
-          case "433":
-            lines = db.formations[0].lines;
-            draft.drawPositions();
-            break;
-          case "442":
-            lines = db.formations[1].lines;
-            draft.drawPositions();
-
-            break;
-          case "4231":
-            lines = db.formations[2].lines;
-            draft.drawPositions();
-
-            break;
-          case "532":
-            lines = db.formations[3].lines;
-            draft.drawPositions();
-
-            break;
-        }
-        draft.removePickFormations();
-        this.controller_playerPick();
-      };
-    });
   }
 
-  // controller_cardCreation() {
-  //   const buttons = document.querySelectorAll("button");
-  //   buttons.forEach((button) => {
-  //     button.onclick = () => {
-  //       const buttonText = button.textContent;
-
-  //       switch (buttonText) {
-  //         case "ZG":
-  //           cardStats = Object.create(db.ZG);
-  //           break;
-  //         case "LDLE":
-  //           cardStats = Object.create(db.LDLE);
-  //           break;
-  //         case "VOL":
-  //           cardStats = Object.create(db.VOL);
-  //           break;
-  //         case "MC":
-  //           cardStats = Object.create(db.MC);
-  //           break;
-  //         case "MEMD":
-  //           cardStats = Object.create(db.MEMD);
-  //           break;
-  //         case "SAMEI":
-  //           cardStats = Object.create(db.SAMEI);
-  //           break;
-  //         case "PEPD":
-  //           cardStats = Object.create(db.PEPD);
-  //           break;
-  //         case "CA":
-  //           cardStats = Object.create(db.CA);
-  //       }
-  //       const player = new Player();
-  //       player.renderCard();
-  //     };
-  //   });
-  // }
- 
-  controller_playerPick() {
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach((button) => {
-      button.onclick = () => {
-        let buttonText = button.textContent;
-        switch (buttonText) {
-          case "ZG":
-            cardStats = Object.create(db.ZG);
-            new PlayerPick();
-            break;
-
-          case "LD":
-          case "LE":
-            cardStats = Object.create(db.LDLE);
-            new PlayerPick();
-            break;
-
-          case "VOL":
-            cardStats = Object.create(db.VOL);
-            new PlayerPick();
-            break;
-
-          case "MC":
-            cardStats = Object.create(db.MC);
-            new PlayerPick();
-            break;
-
-          case "ME":
-          case "MD":
-            cardStats = Object.create(db.MEMD);
-            new PlayerPick();
-            break;
-
-          case "SA":
-          case "MEI":
-            cardStats = Object.create(db.SAMEI);
-            new PlayerPick();
-            break;
-
-          case "PE":
-          case "PD":
-            cardStats = Object.create(db.PEPD);
-            new PlayerPick();
-            break;
-
-          case "CA":
-            cardStats = Object.create(db.CA);
-            new PlayerPick();
-            break;
-        }
-      };
-    });
-  }
 }
 
-init();
-const eventController = new EventController();
-eventController.controller_formations();
+new Draft();

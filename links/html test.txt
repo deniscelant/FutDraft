@@ -1,0 +1,21 @@
+<!-- <div class="formation">
+      <div class="attack">
+        <button id="PE">PE</button>
+        <button id="CA">CA</button>
+        <button id="PD">PD</button>
+      </div>
+      <div class="mid">
+
+        <button id="MCE">MC</button>
+        <button id="MC">MC</button>
+        <button id="MCD">MC</button>
+      </div>
+      <div class="def">
+
+        <button id="LE">LE</button>
+        <button id="ZGE">ZG</button>
+        <button id="ZGD">ZG</button>
+        <button id="LD">LD</button>
+      </div>
+      <button id="GK">GK</button>
+    </div> -->
