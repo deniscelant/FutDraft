@@ -103,70 +103,17 @@ class Draft {
         this.removePickFormations();
       };
     });
-
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach((button) => {
-      button.onclick = () => {
-        let buttonText = button.textContent;
-        switch (buttonText) {
-          case "ZG":
-            cardStats = Object.create(db.ZG);
-            new Player();
-            break;
-
-          case "LD":
-          case "LE":
-            cardStats = Object.create(db.LDLE);
-            new Player();
-            break;
-
-          case "VOL":
-            cardStats = Object.create(db.VOL);
-            new Player();
-            break;
-
-          case "MC":
-            cardStats = Object.create(db.MC);
-            new Player();
-            break;
-
-          case "ME":
-          case "MD":
-            cardStats = Object.create(db.MEMD);
-            new Player();
-            break;
-
-          case "SA":
-          case "MEI":
-            cardStats = Object.create(db.SAMEI);
-            new Player();
-            break;
-
-          case "PE":
-          case "PD":
-            cardStats = Object.create(db.PEPD);
-            new Player();
-            break;
-
-          case "CA":
-            cardStats = Object.create(db.CA);
-            new Player();
-            break;
-        }
-      };
-    });
   }
 }
 
-class Player {
+class PlayerPick {
   constructor() {
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
     this.posDB = cardStats;
 
-    this.Events();
-    this.PlayerPick();
+    this.RenderPlayerWindow();
   }
 
   renderCard() {
@@ -210,17 +157,76 @@ class Player {
     `;
   }
 
-  PlayerPick() {
-    const playersWindow = document.createElement("div");
-    document.body.appendChild(playersWindow);
+  RenderPlayerWindow() {
+    const card = document.createElement("div");
+    card.id = "card"
+    document.body.appendChild(card);
     for (var i = 0; i < 5; i++) {
       const cardSlot = document.createElement("div");
-      cardSlot.id = "cardSlot";
+      cardSlot.classList.add("cardSlot");
+      // Array.from(cardSlot).forEach(card => {
+
+      //   card.innerHTML = this.renderCard();
+      //   card.appendChild(card)
+      // })
       cardSlot.innerHTML = this.renderCard();
-      playersWindow.appendChild(cardSlot);
+      card.appendChild(cardSlot);
     }
   }
-
 }
 
+function events() {
+  // const buttons = document.querySelectorAll("BUTTON");
+  document.body.onclick = (element) => {
+    // if (element.nodeName == "BUTTON") {
+      let buttonText = element.target.textContent;
+      switch (buttonText) {
+        case "ZG":
+          cardStats = Object.create(db.ZG);
+          new PlayerPick();
+          break;
+
+        case "LD":
+        case "LE":
+          cardStats = Object.create(db.LDLE);
+          new PlayerPick();
+          break;
+
+        case "VOL":
+          cardStats = Object.create(db.VOL);
+          new PlayerPick();
+          break;
+
+        case "MC":
+          cardStats = Object.create(db.MC);
+          new PlayerPick();
+          break;
+
+        case "ME":
+        case "MD":
+          cardStats = Object.create(db.MEMD);
+          new PlayerPick();
+          break;
+
+        case "SA":
+        case "MEI":
+          cardStats = Object.create(db.SAMEI);
+          new PlayerPick();
+          break;
+
+        case "PE":
+        case "PD":
+          cardStats = Object.create(db.PEPD);
+          new PlayerPick();
+          break;
+
+        case "CA":
+          cardStats = Object.create(db.CA);
+          new PlayerPick();
+          break;
+      }
+    // }
+  };
+}
 new Draft();
+events();
