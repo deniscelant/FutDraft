@@ -1,7 +1,7 @@
 import * as db from "/db.js";
 
 let cardStats = {};
-let isDraft = false;
+let playerType = ""
 let lines = db.formations[0].lines;
 
 class Draft {
@@ -106,11 +106,32 @@ class Draft {
   }
 }
 
+/*
+
+ZG{
+overNumber:[desarm, dribble, pace, resistance, impulse, height, weight],
+any: [pass, shoot, strength]
+}
+
+*/
+
 class Player {
   constructor() {
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
+    this.stats = {
+      desarm,
+      pass,
+      dribble,
+      shoot,
+      pace,
+      resistance,
+      impulse,
+      strength,
+      height,
+      weight,
+    };
 
     this.cardHTML = `
     <div id ="playerCore">
@@ -150,19 +171,17 @@ class Player {
       </div>
  
     `;
-    
+
     const cardSlot = document.createElement("div");
     cardSlot.classList.add("cardSlot");
     cardSlot.innerHTML = this.cardHTML;
 
     const card = document.createElement("div");
     card.id = "card";
-    
+
     document.body.appendChild(card);
     card.appendChild(cardSlot);
-
   }
-
 }
 
 function RenderPlayerWindow() {
@@ -232,7 +251,6 @@ function events() {
     // }
   };
 }
-
 
 new Draft();
 events();
