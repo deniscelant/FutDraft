@@ -183,62 +183,66 @@ class Player {
     card.appendChild(cardSlot);
   }
 
-  genStat(position, stat){
+  setPlayerPosition(position){
     switch (position) {
       case "ZG":
     
-        this.desarm = db.ZG.desarm[Math.floor(Math.random() * db.ZG.desarm.length)]
+        playerPosition = "ZG";
         RenderPlayerWindow();
         break;
 
       case "LD":
       case "LE":
-        cardStats = Object.create(db.LDLE);
+        playerPosition = "LDLE";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "VOL":
-        cardStats = Object.create(db.VOL);
+        playerPosition = "VOL";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "MC":
-        cardStats = Object.create(db.MC);
+        playerPosition = "MC";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "ME":
       case "MD":
-        cardStats = Object.create(db.MEMD);
+        playerPosition = "MEMD";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "SA":
       case "MEI":
-        cardStats = Object.create(db.SAMEI);
+        playerPosition = "SAMEI";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "PE":
       case "PD":
-        cardStats = Object.create(db.PEPD);
+        playerPosition = "PEPD";
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "CA":
-        cardStats = Object.create(db.CA);
+        playerPosition = "CA";
         RenderPlayerWindow();
-        cardStats = {};
         break;
     }
   }
+  genStat(){
+
+  }
 }
+
+function overNumber(min, max) {
+  const minNumber = Math.ceil(min);
+  const maxNumber = Math.floor(max);
+  return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
+}
+
+const any = Math.floor(Math.random() * 99);
 
 function RenderPlayerWindow() {
   for (var i = 0; i < 5; i++) {
