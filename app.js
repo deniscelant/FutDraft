@@ -1,7 +1,7 @@
 import * as db from "/db.js";
 
 let cardStats = {};
-let playerType = ""
+let playerPosition = ""
 let lines = db.formations[0].lines;
 
 class Draft {
@@ -116,7 +116,7 @@ any: [pass, shoot, strength]
 */
 
 class Player {
-  constructor() {
+  constructor(position) {
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
@@ -182,24 +182,13 @@ class Player {
     document.body.appendChild(card);
     card.appendChild(cardSlot);
   }
-}
 
-function RenderPlayerWindow() {
-  for (var i = 0; i < 5; i++) {
-    new Player();
-  }
-}
-
-function events() {
-  // const buttons = document.querySelectorAll("BUTTON");
-  document.body.onclick = (element) => {
-    // if (element.nodeName == "BUTTON") {
-    let buttonText = element.target.textContent;
-    switch (buttonText) {
+  genStat(position, stat){
+    switch (position) {
       case "ZG":
-        cardStats = Object.create(db.ZG);
+    
+        this.desarm = db.ZG.desarm[Math.floor(Math.random() * db.ZG.desarm.length)]
         RenderPlayerWindow();
-        cardStats = {};
         break;
 
       case "LD":
@@ -248,7 +237,19 @@ function events() {
         cardStats = {};
         break;
     }
-    // }
+  }
+}
+
+function RenderPlayerWindow() {
+  for (var i = 0; i < 5; i++) {
+    new Player();
+  }
+}
+
+function events() {
+  document.body.onclick = (element) => {
+    playerPosition = element.target.textContent;
+    
   };
 }
 

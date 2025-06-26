@@ -30,16 +30,16 @@ export const names = ["Denis", "Ronaldo", "James", "Martinez"];
 export const nations = ["Brazil", "England", "Germany", "Spain"];
 
 export const ZG = {
-  desarm: overNumber(60,99),
-  pass: any,
-  dribble: overNumber(10,60),
-  shoot: any,
-  pace: overNumber(10,60),
-  resistance: overNumber(60,99),
-  impulse: overNumber(60,99),
-  strength: any,
-  height: overNumber(1.75, 2.0),
-  weight: overNumber(60, 120),
+  desarm: [60,99],
+  pass: [20,99],
+  dribble: [20,60],
+  shoot: [20,99],
+  pace: [20,60],
+  resistance: [60,99],
+  impulse: [60,99],
+  strength: [20,99],
+  height: [175,200],
+  weight: [60,120],
 
 }
 
@@ -193,3 +193,8 @@ export const formations = [
 
   },
 ];
+
+
+function random(stat){
+  stat = db.ZG.stat[Math.floor(Math.random() * db.ZG.stat.length)]
+}
