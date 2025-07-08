@@ -24,7 +24,7 @@ export const positions = [
 
   {
     position: "ZG",
-    desarm: [60,99],
+    desarm: [60,99], 
     pass: [20,99],
     dribble: [20,60],
     shoot: [20,99],
@@ -36,7 +36,7 @@ export const positions = [
     weight: [60,120],
   
   },
-  
+  /*
   {
     position: "LDLE",
     desarm: any,
@@ -134,6 +134,7 @@ export const positions = [
     height: overNumber(1.60, 2.0),
     weight: overNumber(60, 120),
   },
+  */
 ]
 
 // export const stats = [

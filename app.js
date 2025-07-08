@@ -120,18 +120,20 @@ class Player {
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
-    this.stats = {
-      desarm,
-      pass,
-      dribble,
-      shoot,
-      pace,
-      resistance,
-      impulse,
-      strength,
-      height,
-      weight,
-    };
+    this.desarm = db.positions[]
+
+    // this.stats = {
+    //   desarm: db.positions.desarm[0],
+    //   // pass,
+    //   // dribble,
+    //   // shoot,
+    //   // pace,
+    //   // resistance,
+    //   // impulse,
+    //   // strength,
+    //   // height,
+    //   // weight,
+    // };
 
     this.cardHTML = `
     <div id ="playerCore">
@@ -183,7 +185,7 @@ class Player {
     card.appendChild(cardSlot);
   }
 
-  setPlayerPosition(position){
+  static setPlayerPosition(position){
     switch (position) {
       case "ZG":
     
@@ -242,7 +244,7 @@ function overNumber(min, max) {
   return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
 }
 
-const any = Math.floor(Math.random() * 99);
+const any = Math.floor(Math.random() * 2);
 
 function RenderPlayerWindow() {
   for (var i = 0; i < 5; i++) {
@@ -252,7 +254,7 @@ function RenderPlayerWindow() {
 
 function events() {
   document.body.onclick = (element) => {
-    playerPosition = element.target.textContent;
+    Player.setPlayerPosition(element.target.textContent);
     
   };
 }
