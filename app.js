@@ -113,16 +113,31 @@ any: [pass, shoot, strength]
 }
 
 */
-
+const arrExample = [1,2]
+const any = Math.floor(Math.random() * arrExample.length)
 class Player {
   constructor(position) {
     this.position = position
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
-    let findstat = db.positions.find(pos => pos.position == this.position)
-    this.desarm = findstat
+    let findstat = db.positions.find(pos => pos.position == this.position);
+    this.desarm = findstat;
 
+    db.positions.forEach(obj => {
+      if(this.position == obj.position){
+        this.desarm = obj.desarm[any]
+        this.pass = obj.pass[any]
+        this.dribble = obj.dribble[any]
+        this.shoot = obj.shoot[any]
+        this.pace = obj.pace[any]
+        this.resistance = obj.resistance[any]
+        this.impulse = obj.impulse[any]
+        this.strength = obj.strength[any]
+        this.height = obj.height[any]
+        this.weight = obj.weight[any]
+      }
+    })
     // this.stats = {
     //   desarm: db.positions.desarm[0],
     //   // pass,
@@ -242,8 +257,6 @@ function overNumber(min, max) {
   return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
 }
 
-const any = Math.floor(Math.random() * 2);
-
 function RenderPlayerWindow() {
   for (var i = 0; i < 5; i++) {
     new Player(playerPosition);
@@ -255,7 +268,6 @@ function events() {
     playerPosition = element.target.textContent;
     if(element.target.nodeName == "BUTTON"){
       RenderPlayerWindow();
-      console.log(playerPosition)
     }
   };
 }
