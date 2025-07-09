@@ -1,6 +1,5 @@
 import * as db from "/db.js";
 
-let cardStats = {};
 let playerPosition = ""
 let lines = db.formations[0].lines;
 
@@ -117,10 +116,12 @@ any: [pass, shoot, strength]
 
 class Player {
   constructor(position) {
+    this.position = position
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
-    this.desarm = db.positions[]
+    let findstat = db.positions.find(pos => pos.position == this.position)
+    this.desarm = findstat
 
     // this.stats = {
     //   desarm: db.positions.desarm[0],
@@ -147,26 +148,26 @@ class Player {
         <div id="infoStats">
             <ul>
               <li>Pass</li>
-              <li id="pass_stat">${cardStats.pass}</li>
+              <li id="pass_stat">${this.pass}</li>
               <li>Dribble</li>
-              <li id="dribble_stat">${cardStats.dribble}</li>
+              <li id="dribble_stat">${this.dribble}</li>
               <li>Desarm</li>
-              <li id="desarm_stat">${cardStats.desarm}</li>
+              <li id="desarm_stat">${this.desarm}</li>
               <li>Shoot</li>
-              <li id="shoot_stat">${cardStats.shoot}</li>
+              <li id="shoot_stat">${this.shoot}</li>
             </ul>
           </div>
 
           <div id="infoPhysics">
             <ul>
               <li>Pace</li>
-              <li id="pace_stat">${cardStats.pace}</li>
+              <li id="pace_stat">${this.pace}</li>
               <li>Resistance</li>
-              <li id="resistance_stat">${cardStats.resistance}</li>
+              <li id="resistance_stat">${this.resistance}</li>
               <li>Impulse</li>
-              <li id="impulse_stat">${cardStats.impulse}</li>
+              <li id="impulse_stat">${this.impulse}</li>
               <li>Strength</li>
-              <li id="strength_stat">${cardStats.strength}</li>
+              <li id="strength_stat">${this.strength}</li>
             </ul>
           </div>
           
@@ -185,57 +186,54 @@ class Player {
     card.appendChild(cardSlot);
   }
 
-  static setPlayerPosition(position){
-    switch (position) {
-      case "ZG":
-    
-        playerPosition = "ZG";
-        RenderPlayerWindow();
-        break;
+  // setPlayerPosition(){
+  //   switch (this.position) {
+  //     case "ZG":
 
-      case "LD":
-      case "LE":
-        playerPosition = "LDLE";
-        RenderPlayerWindow();
-        break;
+  //       this.position = "ZG";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "VOL":
-        playerPosition = "VOL";
-        RenderPlayerWindow();
-        break;
+  //     case "LD":
+  //     case "LE":
+  //       playerPosition = "LDLE";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "MC":
-        playerPosition = "MC";
-        RenderPlayerWindow();
-        break;
+  //     case "VOL":
+  //       playerPosition = "VOL";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "ME":
-      case "MD":
-        playerPosition = "MEMD";
-        RenderPlayerWindow();
-        break;
+  //     case "MC":
+  //       playerPosition = "MC";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "SA":
-      case "MEI":
-        playerPosition = "SAMEI";
-        RenderPlayerWindow();
-        break;
+  //     case "ME":
+  //     case "MD":
+  //       playerPosition = "MEMD";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "PE":
-      case "PD":
-        playerPosition = "PEPD";
-        RenderPlayerWindow();
-        break;
+  //     case "SA":
+  //     case "MEI":
+  //       playerPosition = "SAMEI";
+  //       RenderPlayerWindow();
+  //       break;
 
-      case "CA":
-        playerPosition = "CA";
-        RenderPlayerWindow();
-        break;
-    }
-  }
-  genStat(){
+  //     case "PE":
+  //     case "PD":
+  //       playerPosition = "PEPD";
+  //       RenderPlayerWindow();
+  //       break;
 
-  }
+  //     case "CA":
+  //       playerPosition = "CA";
+  //       RenderPlayerWindow();
+  //       break;
+  //   }
+  // }
 }
 
 function overNumber(min, max) {
@@ -248,14 +246,17 @@ const any = Math.floor(Math.random() * 2);
 
 function RenderPlayerWindow() {
   for (var i = 0; i < 5; i++) {
-    new Player();
+    new Player(playerPosition);
   }
 }
 
 function events() {
   document.body.onclick = (element) => {
-    Player.setPlayerPosition(element.target.textContent);
-    
+    playerPosition = element.target.textContent;
+    if(element.target.nodeName == "BUTTON"){
+      RenderPlayerWindow();
+      console.log(playerPosition)
+    }
   };
 }
 
