@@ -1,6 +1,6 @@
 import * as db from "/db.js";
 
-let playerPosition = ""
+let playerPosition = "";
 let lines = db.formations[0].lines;
 
 class Draft {
@@ -43,23 +43,23 @@ class Draft {
           case "CA":
           case "PD":
             attackDiv.appendChild(cell);
-            cell.classList.add("attack");
+            cell.classList.add("positionButton");
             break;
           case "ME":
           case "MC":
           case "SA":
           case "MEI":
-            cell.classList.add("mid");
+            cell.classList.add("positionButton");
             midDiv.appendChild(cell);
             break;
           case "MD":
-            cell.classList.add("mid");
+            cell.classList.add("positionButton");
             midDefDiv.appendChild(cell);
 
           case "LE":
           case "ZG":
           case "LD":
-            cell.classList.add("def");
+            cell.classList.add("positionButton");
             defDiv.appendChild(cell);
             break;
         }
@@ -105,54 +105,47 @@ class Draft {
   }
 }
 
-/*
-
-ZG{
-overNumber:[desarm, dribble, pace, resistance, impulse, height, weight],
-any: [pass, shoot, strength]
-}
-
-*/
-const arrExample = [1,2]
-const any = Math.floor(Math.random() * arrExample.length)
-
 class Player {
   constructor(position) {
-    this.position = position
+    this.position = position;
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
-    let findstat = db.positions.find(pos => pos.position == this.position);
+    let findstat = db.positions.find((pos) => pos.position == this.position);
     this.desarm = findstat;
 
-    db.positions.forEach(obj => {
-      if(this.position == obj.position){
-        this.desarm = overNumber(obj.desarm[0], obj.desarm[1])
-        this.pass = overNumber(obj.pass[0], obj.pass[1])
-        this.dribble = overNumber(obj.dribble[0], obj.dribble[1])
-        this.shoot = overNumber(obj.shoot[0], obj.shoot[1])
-        this.pace = overNumber(obj.pace[0], obj.pace[1])
-        this.resistance = overNumber(obj.resistance[0], obj.resistance[1])
-        this.impulse = overNumber(obj.impulse[0], obj.impulse[1])
-        this.strength = overNumber(obj.strength[0], obj.strength[1])
-        this.height = overNumber(obj.height[0], obj.height[1])
-        this.weight = overNumber(obj.weight[0], obj.weight[1])
+    db.positions.forEach((obj) => {
+      if (this.position == obj.position) {
+        this.desarm = overNumber(obj.desarm[0], obj.desarm[1]);
+        this.pass = overNumber(obj.pass[0], obj.pass[1]);
+        this.dribble = overNumber(obj.dribble[0], obj.dribble[1]);
+        this.shoot = overNumber(obj.shoot[0], obj.shoot[1]);
+        this.pace = overNumber(obj.pace[0], obj.pace[1]);
+        this.resistance = overNumber(obj.resistance[0], obj.resistance[1]);
+        this.impulse = overNumber(obj.impulse[0], obj.impulse[1]);
+        this.strength = overNumber(obj.strength[0], obj.strength[1]);
+        this.height = overNumber(obj.height[0], obj.height[1]);
+        this.weight = overNumber(obj.weight[0], obj.weight[1]);
       }
-    })
-    
-    // this.stats = {
-    //   desarm: db.positions.desarm[0],
-    //   // pass,
-    //   // dribble,
-    //   // shoot,
-    //   // pace,
-    //   // resistance,
-    //   // impulse,
-    //   // strength,
-    //   // height,
-    //   // weight,
-    // };
+    });
 
+    this.registryCard = {
+      position: this.position,
+      desarm: this.desarm,
+      pass: this.pass,
+      dribble: this.dribble,
+      shoot: this.shoot,
+      pace: this.pace,
+      resistance: this.resistance,
+      impulse: this.impulse,
+      strength: this.strength,
+      height: this.height,
+      weight: this.weight,
+    };
+
+    db.cardDB.push(this.registryCard)
+    console.log(db.cardDB)
+    
     this.cardHTML = `
     <div id ="playerCore">
         <div class="playerInfo">
@@ -199,58 +192,10 @@ class Player {
     const card = document.createElement("div");
     card.id = "card";
 
-    document.body.appendChild(card);
+    const cardBox = document.getElementById("cardBox")
+    cardBox.appendChild(card);
     card.appendChild(cardSlot);
   }
-
-  // setPlayerPosition(){
-  //   switch (this.position) {
-  //     case "ZG":
-
-  //       this.position = "ZG";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "LD":
-  //     case "LE":
-  //       playerPosition = "LDLE";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "VOL":
-  //       playerPosition = "VOL";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "MC":
-  //       playerPosition = "MC";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "ME":
-  //     case "MD":
-  //       playerPosition = "MEMD";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "SA":
-  //     case "MEI":
-  //       playerPosition = "SAMEI";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "PE":
-  //     case "PD":
-  //       playerPosition = "PEPD";
-  //       RenderPlayerWindow();
-  //       break;
-
-  //     case "CA":
-  //       playerPosition = "CA";
-  //       RenderPlayerWindow();
-  //       break;
-  //   }
-  // }
 }
 
 function overNumber(min, max) {
@@ -268,8 +213,10 @@ function RenderPlayerWindow() {
 function events() {
   document.body.onclick = (element) => {
     playerPosition = element.target.textContent;
-    if(element.target.nodeName == "BUTTON"){
+    if (element.target.nodeName == "BUTTON") {
       RenderPlayerWindow();
+    }
+    if (element.target.class == "cardSlot") {
     }
   };
 }

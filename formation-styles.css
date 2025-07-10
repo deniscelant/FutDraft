@@ -1,58 +1,30 @@
-/* 433 */
-.attack{
-  grid-area: attack;
-}
-
-.mid {
-  grid-area: mid;
-}
-
-.def {
-  grid-area: def;
-}
-
-#empty-space{
-  grid-area: space;
-
-}
-
 .LineUp{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+
 }
 
-._433 {
-    display: grid;
-    grid-template-areas:
-      'attack space attack attack space space'
-      'space mid mid mid space'
-      'def def space def def';
-  }
+.positionButton{
+  font-size: 24px;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  padding: 25px;
+  border-radius: 20px;
+}
 
-  .formation{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px;
-  }
+.lineDivision{
+  display: flex;
+  gap: 20px;
+}
 
-  .formation button{
-    padding: 5px;
-    font-family: "Space Grotesk";
-    font-weight: 700;
-  }
-/* 
-#PE{transform: translateX(-10px);}
-#PD{transform: translateX(10px);}
-#CA{transform: translateY(3px);}
-#MCE{transform: translateX(-5px);}
-#MCD{transform: translateX(5px);}
-#MC{transform: translateY(5px);}
-#LE{transform: translateX(-5px);}
-#LD{transform: translateX(5px);}
-#ZGE{transform: translateY(5px);}#ZGE{transform: translateX(-2px);}
-#ZGD{transform: translateY(5px);}#ZGD{transform: translateX(2px);} */
+#lineUpBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 15px;
+}

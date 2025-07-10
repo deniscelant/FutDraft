@@ -18,7 +18,7 @@ export const clubs = [
 ];
 
 export const names = ["Denis", "Ronaldo", "James", "Martinez"];
-export const nations = ["Brazil", "England", "Germ[20,99]", "Spain"];
+export const nations = ["Brazil", "England", "Germany", "Spain"];
 
 export const positions = [
 
@@ -37,7 +37,20 @@ export const positions = [
   
   },
   {
-    position: "LDLE",
+    position: "LD",
+    desarm: [20,99],
+    pass: [60,99],
+    dribble: [20,99],
+    shoot: [20,99],
+    pace: [60,99],
+    resistance: [60,99],
+    impulse: [20,99],
+    strength: [20,99],
+    height: [1.60,2.00],
+    weight: [60,80],
+  },
+  {
+    position: "LE",
     desarm: [20,99],
     pass: [60,99],
     dribble: [20,99],
@@ -79,7 +92,20 @@ export const positions = [
   },
   
   {
-    position: "MEMD",
+    position: "ME",
+    desarm: [20,99],
+    pass: [20,99],
+    dribble: [60,99],
+    shoot: [20,99],
+    pace: [60,99],
+    resistance: [60,99],
+    impulse: [20,99],
+    strength: [20,99],
+    height: [1.60,2.00],
+    weight: [60,100],
+  },
+  {
+    position: "MD",
     desarm: [20,99],
     pass: [20,99],
     dribble: [60,99],
@@ -93,7 +119,20 @@ export const positions = [
   },
   
   {
-    position: "SAMEI",
+    position: "SA",
+    desarm: [20,99],
+    pass: [20,99],
+    dribble: [60,99],
+    shoot: [60,99],
+    pace: [60,99],
+    resistance: [20,99],
+    impulse: [20,99],
+    strength: [20,99],
+    height: [1.60,1.80],
+    weight: [60,80],
+  },
+  {
+    position: "MEI",
     desarm: [20,99],
     pass: [20,99],
     dribble: [60,99],
@@ -107,7 +146,20 @@ export const positions = [
   },
   
   {
-    position: "PEPD",
+    position: "PE",
+    desarm: [20,99],
+    pass: [20,99],
+    dribble: [60,99],
+    shoot: [20,99],
+    pace: [60,99],
+    resistance: [20,99],
+    impulse: [20,99],
+    strength: [20,99],
+    height: [1.60,2.00],
+    weight: [60,100],
+  },
+  {
+    position: "PD",
     desarm: [20,99],
     pass: [20,99],
     dribble: [60,99],
@@ -134,27 +186,6 @@ export const positions = [
     weight: [60,100],
   },
 ]
-
-// export const stats = [
-
-//   {
-//     name: "physics",
-//     pace: 99,
-//     resistance: 99,
-//     impulse: 99,
-//     strength: 99,
-//     height: 1.99,
-//     weight: 80,
-//   },
-  
-//   {
-//     name: "technical",
-//     desarm: 99,
-//     pass: 99,
-//     dribble: 99,
-//     shoot: 99,
-//   }
-// ]
 
 export const formations = [
   {
@@ -199,7 +230,4 @@ export const formations = [
   },
 ];
 
-
-function random(stat){
-  stat = db.ZG.stat[Math.floor(Math.random() * db.ZG.stat.length)]
-}
+export let cardDB = [];
