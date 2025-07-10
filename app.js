@@ -115,6 +115,7 @@ any: [pass, shoot, strength]
 */
 const arrExample = [1,2]
 const any = Math.floor(Math.random() * arrExample.length)
+
 class Player {
   constructor(position) {
     this.position = position
@@ -126,18 +127,19 @@ class Player {
 
     db.positions.forEach(obj => {
       if(this.position == obj.position){
-        this.desarm = obj.desarm[any]
-        this.pass = obj.pass[any]
-        this.dribble = obj.dribble[any]
-        this.shoot = obj.shoot[any]
-        this.pace = obj.pace[any]
-        this.resistance = obj.resistance[any]
-        this.impulse = obj.impulse[any]
-        this.strength = obj.strength[any]
-        this.height = obj.height[any]
-        this.weight = obj.weight[any]
+        this.desarm = overNumber(obj.desarm[0], obj.desarm[1])
+        this.pass = overNumber(obj.pass[0], obj.pass[1])
+        this.dribble = overNumber(obj.dribble[0], obj.dribble[1])
+        this.shoot = overNumber(obj.shoot[0], obj.shoot[1])
+        this.pace = overNumber(obj.pace[0], obj.pace[1])
+        this.resistance = overNumber(obj.resistance[0], obj.resistance[1])
+        this.impulse = overNumber(obj.impulse[0], obj.impulse[1])
+        this.strength = overNumber(obj.strength[0], obj.strength[1])
+        this.height = overNumber(obj.height[0], obj.height[1])
+        this.weight = overNumber(obj.weight[0], obj.weight[1])
       }
     })
+    
     // this.stats = {
     //   desarm: db.positions.desarm[0],
     //   // pass,
@@ -252,8 +254,8 @@ class Player {
 }
 
 function overNumber(min, max) {
-  const minNumber = Math.ceil(min);
-  const maxNumber = Math.floor(max);
+  let minNumber = Math.ceil(min);
+  let maxNumber = Math.floor(max);
   return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
 }
 
