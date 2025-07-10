@@ -231,3 +231,4 @@ export const formations = [
 ];
 
 export let cardDB = [];
+export let lineUpDB = [];

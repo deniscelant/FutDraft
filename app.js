@@ -210,12 +210,17 @@ function RenderPlayerWindow() {
 }
 
 function events() {
+  let clickedButton;
   document.body.onclick = (element) => {
     playerPosition = element.target.textContent;
     if (element.target.nodeName == "BUTTON") {
       RenderPlayerWindow();
+
     }
-    if (element.target.class == "cardSlot") {
+    if (element.target.id == "card") {
+      const storeCard = {
+        
+      }
     }
   };
 }
