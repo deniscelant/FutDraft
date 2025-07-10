@@ -1,4 +1,4 @@
-import * as db from "/db.js";
+import * as db from "./db.js";
 
 let playerPosition = "";
 let lines = db.formations[0].lines;
