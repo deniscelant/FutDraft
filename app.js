@@ -144,7 +144,6 @@ class Player {
     };
 
     db.cardDB.push(this.registryCard)
-    console.log(db.cardDB)
     
     this.cardHTML = `
     <div id ="playerCore">
