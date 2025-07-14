@@ -1,15 +1,19 @@
 import * as db from "./db.js";
 
+const attackDiv = document.getElementById("attackDiv");
+const midDiv = document.getElementById("midDiv");
+const defDiv = document.getElementById("defDiv");
+const midDefDiv = document.getElementById("midDefDiv");
+
 let playerPosition = "";
 let lines = db.formations[0].lines;
 
 class Draft {
   constructor() {
-    this.pickFormations();
-    this.Events();
+    this.initFormations();
   }
 
-  pickFormations() {
+  initFormations() {
     db.formations.forEach((formation) => {
       const formationBoard = document.createElement("div");
       formationBoard.classList.add("board");
@@ -24,14 +28,10 @@ class Draft {
     });
   }
 
-  drawPositions() {
+  static drawPositions() {
     for (var i = 0; i < lines.length; i++) {
       for (var j = 0; j < lines[i].length; j++) {
         const cell = document.createElement("Button");
-        const attackDiv = document.getElementById("attackDiv");
-        const midDiv = document.getElementById("midDiv");
-        const defDiv = document.getElementById("defDiv");
-        const midDefDiv = document.getElementById("midDefDiv");
 
         cell.id = "cell";
 
@@ -67,42 +67,13 @@ class Draft {
     }
   }
 
-  removePickFormations() {
+  static removeinitFormations() {
     const formationBoard = document.querySelectorAll(".board");
     formationBoard.forEach((frm) => {
       frm.remove();
     });
   }
 
-  Events() {
-    const divs = document.querySelectorAll("div");
-    divs.forEach((div) => {
-      div.onclick = () => {
-        switch (div.id) {
-          case "433":
-            lines = db.formations[0].lines;
-            this.drawPositions();
-            break;
-          case "442":
-            lines = db.formations[1].lines;
-            this.drawPositions();
-
-            break;
-          case "4231":
-            lines = db.formations[2].lines;
-            this.drawPositions();
-
-            break;
-          case "532":
-            lines = db.formations[3].lines;
-            this.drawPositions();
-
-            break;
-        }
-        this.removePickFormations();
-      };
-    });
-  }
 }
 
 class Player {
@@ -191,6 +162,10 @@ class Player {
     const card = document.createElement("div");
     card.id = "card";
 
+    card.onclick = () =>{
+      db.lineUpDB.push(card)
+    }
+
     const cardBox = document.getElementById("cardBox")
     cardBox.appendChild(card);
     card.appendChild(cardSlot);
@@ -210,18 +185,43 @@ function RenderPlayerWindow() {
 }
 
 function events() {
-  let clickedButton;
   document.body.onclick = (element) => {
     playerPosition = element.target.textContent;
+    let activeButton
     if (element.target.nodeName == "BUTTON") {
       RenderPlayerWindow();
+      activeButton = element.target.textContent;
+    }
+    if (element.target.id == "card" && activeButton == ) {
+      
+    }
+    const divs = document.querySelectorAll("div");
+    divs.forEach((div) => {
+      div.onclick = () => {
+        switch (div.id) {
+          case "433":
+            lines = db.formations[0].lines;
+            Draft.drawPositions();
+            break;
+          case "442":
+            lines = db.formations[1].lines;
+            Draft.drawPositions();
 
-    }
-    if (element.target.id == "card") {
-      const storeCard = {
-        
-      }
-    }
+            break;
+          case "4231":
+            lines = db.formations[2].lines;
+            Draft.drawPositions();
+
+            break;
+          case "532":
+            lines = db.formations[3].lines;
+            Draft.drawPositions();
+
+            break;
+        }
+        Draft.removeinitFormations();
+      };
+    });
   };
 }
 
