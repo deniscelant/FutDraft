@@ -162,10 +162,6 @@ class Player {
     const card = document.createElement("div");
     card.id = "card";
 
-    card.onclick = () =>{
-      db.lineUpDB.push(card)
-    }
-
     const cardBox = document.getElementById("cardBox")
     cardBox.appendChild(card);
     card.appendChild(cardSlot);
@@ -192,8 +188,8 @@ function events() {
       RenderPlayerWindow();
       activeButton = element.target.textContent;
     }
-    if (element.target.id == "card" && activeButton == ) {
-      
+    if (element.target.id == "card") {
+      db.lineUpDB.push()
     }
     const divs = document.querySelectorAll("div");
     divs.forEach((div) => {
