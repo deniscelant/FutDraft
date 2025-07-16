@@ -82,8 +82,6 @@ class Player {
     this.nome = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];
     this.club = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
-    let findstat = db.positions.find((pos) => pos.position == this.position);
-    this.desarm = findstat;
 
     db.positions.forEach((obj) => {
       if (this.position == obj.position) {
@@ -183,13 +181,16 @@ function RenderPlayerWindow() {
 function events() {
   document.body.onclick = (element) => {
     playerPosition = element.target.textContent;
-    let activeButton
+    let activeButton;
     if (element.target.nodeName == "BUTTON") {
       RenderPlayerWindow();
-      activeButton = element.target.textContent;
+      activeButton = element.target;
     }
     if (element.target.id == "card") {
-      db.lineUpDB.push()
+      // const substitulo = element.target.cloneNode(true);
+      // activeButton.replaceWith(substitulo)
+      const storeElement = element.target;
+      db.lineUpDB.push(storeElement)
     }
     const divs = document.querySelectorAll("div");
     divs.forEach((div) => {
@@ -218,7 +219,11 @@ function events() {
         Draft.removeinitFormations();
       };
     });
+    console.log(element.target)
+    console.log(db.lineUpDB)
+    document.querySelector("#demo").innerHTML = db.lineUpDB;
   };
+
 }
 
 new Draft();
