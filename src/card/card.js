@@ -1,9 +1,10 @@
 class Card {
-    constructor(info, stats) {}
-  
-    renderCard() {
-      h1.textContent = info;
-      p.textContent = stats;
+    constructor(playerBasics,position,stats) {
+        playerBasics = this.playerBasics;
+        position = this.position;
+        stats = this.stats;
     }
+    
+    renderCard() {}
   }
   
