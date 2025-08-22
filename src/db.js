@@ -2,18 +2,22 @@ export const clubs = [
   {
     club: "Barcelona",
     league: "LaLiga",
+    tier: "S",
   },
   {
     club: "Real Madrid",
     league: "LaLiga",
+    tier: "S",
   },
   {
     club: "Manchester city",
     league: "Premier League",
+    tier: "S",
   },
   {
     club: "Bayern de munique",
     league: "Bundesliga",
+    tier: "S",
   },
 ];
 
@@ -229,6 +233,3 @@ export const formations = [
 
   },
 ];
-
-export let cardDB = [];
-export let lineUpDB = [];
