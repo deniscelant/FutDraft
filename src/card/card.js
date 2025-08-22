@@ -1,6 +1,6 @@
 class Card {
-    constructor(playerBasics,position,stats) {
-        playerBasics = this.playerBasics;
+    constructor(basics,position,stats) {
+        basics = this.basics;
         position = this.position;
         stats = this.stats;
     }
@@ -8,3 +8,5 @@ class Card {
     renderCard() {}
   }
   
+
+  new Card(basics, position, stats)

@@ -1,7 +1,8 @@
-export let playerBasics = {
-  name: "",
-  club: "",
-  country: "",
+export let basics = {
+    nome: db.names[Math.floor(Math.random() * db.names.length)],
+    nation: db.nations[Math.floor(Math.random() * db.nations.length)],
+    club: db.clubs[Math.floor(Math.random() * db.clubs.length)].club,
+
 };
 
 export let position;
