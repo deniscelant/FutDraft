@@ -1,9 +1,6 @@
 class Button{
-    constructor(name, link){
+    constructor(name, method){
         this.name = name;
-        this.link = link;
-    }
-    action(){
-        
+        this.method = method;
     }
 }

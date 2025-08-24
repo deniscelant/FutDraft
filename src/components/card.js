@@ -24,3 +24,8 @@ class Card {
 
   }
 }
+
+let cards = []
+const card = new Card("ZG")
+cards.push(card) 
+console.log(cards)             
