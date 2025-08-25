@@ -25,6 +25,9 @@ export const names = ["Denis", "Ronaldo", "James", "Martinez"];
 export const nations = ["Brazil", "England", "Germany", "Spain"];
 
 export const positions = [
+  {
+    empty,
+  },
 
   {
     position: "ZG",

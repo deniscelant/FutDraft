@@ -1,6 +1,14 @@
-import * as db from "./db.js"
+// dentro de src/components/card.js
+import * as db from "../game/db.js";
 
-class Card {
+
+export function overNumber(min, max) {
+  let minNumber = Math.ceil(min);
+  let maxNumber = Math.floor(max);
+  return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
+}
+
+export class Card {
   constructor(position) {
     this.position = position;
     this.name = db.names[Math.floor(Math.random() * db.names.length)];
@@ -25,7 +33,7 @@ class Card {
   }
 }
 
-let cards = []
-const card = new Card("ZG")
-cards.push(card) 
-console.log(cards)             
+// let cards = []
+// const card = new Card("ZG")
+// cards.push(card) 
+// console.log(cards)             

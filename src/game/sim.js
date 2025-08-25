@@ -1,15 +1,10 @@
 import * as db from "./db.js";
 
-const levels = [
-    {
-        id: 1,
-        step: "Oitavas de final",
-    }
-];
+let genOpponentClub = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
 
-let genOpponent = db.clubs[Math.floor(Math.random() * db.clubs.length)].club;
+function nextMatch(step) {
 
-function newMatch() {}
+}
 
 class SimMatch {
   constructor() {}

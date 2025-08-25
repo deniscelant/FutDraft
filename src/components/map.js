@@ -4,28 +4,28 @@ export class Map {
   constructor(Iformation) {
     this.lines = db.formations[0].lines;
 
-    this.GK = emptyCard;
-    this.LE = emptyCard;
-    this.ZGE = emptyCard;
-    this.ZGC = emptyCard;
-    this.ZGD = emptyCard;
-    this.LD = emptyCard;
-    this.ADE = emptyCard;
-    this.MDE = emptyCard;
-    this.VOL = emptyCard;
-    this.MDD = emptyCard;
-    this.ADD = emptyCard;
-    this.ME = emptyCard;
-    this.MCE = emptyCard;
-    this.MC = emptyCard;
-    this.MCD = emptyCard;
-    this.MD = emptyCard;
-    this.MOE = emptyCard;
-    this.MO = emptyCard;
-    this.MOD = emptyCard;
-    this.PLE = emptyCard;
-    this.PLD = emptyCard;
-    this.PL = emptyCard;
+    this.GK = db.empty;
+    this.LE = db.empty;
+    this.ZGE = db.empty;
+    this.ZGC = db.empty;
+    this.ZGD = db.empty;
+    this.LD = db.empty;
+    this.ADE = db.empty;
+    this.MDE = db.empty;
+    this.VOL = db.empty;
+    this.MDD = db.empty;
+    this.ADD = db.empty;
+    this.ME = db.empty;
+    this.MCE = db.empty;
+    this.MC = db.empty;
+    this.MCD = db.empty;
+    this.MD = db.empty;
+    this.MOE = db.empty;
+    this.MO = db.empty;
+    this.MOD = db.empty;
+    this.PLE = db.empty;
+    this.PLD = db.empty;
+    this.PL = db.empty;
   }
 }
 
