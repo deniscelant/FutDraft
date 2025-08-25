@@ -21,13 +21,13 @@ export const clubs = [
   },
 ];
 
+
+export const tiers = ["S", "A", "B", "C", "D", "E"]
+
 export const names = ["Denis", "Ronaldo", "James", "Martinez"];
 export const nations = ["Brazil", "England", "Germany", "Spain"];
 
 export const positions = [
-  {
-    empty,
-  },
 
   {
     position: "ZG",
