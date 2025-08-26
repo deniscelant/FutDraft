@@ -11,8 +11,9 @@ import * as db from "/src/game/db.js"
 import * as gameSaves from "/src/game/gameSaves.js"
 import * as sim from "/src/game/sim.js"
 import * as tactics from "/src/game/tactics.js"
+import { randomArrayIndex } from "./utils/random.js"
  
-const nlineup = new LineUp(utils.randomArrayIndex(db.clubs), utils.randomArrayIndex(db.tiers), utils.randomObjectIndex(db.formations, db.formations.name))
+const nlineup = new LineUp(utils.randomArrayIndex(db.clubs), db.formations[Math.floor(Math.random() * db.formations.length)].name)
 console.log(nlineup) 
  
- 
+  

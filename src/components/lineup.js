@@ -1,12 +1,12 @@
 import { Card } from "/src/components/card.js";
-import * as db from "/src/game/db.js"
+import * as db from "/src/game/db.js";
 
 export class LineUp {
-  constructor(club, tier, Iformation) {
+  constructor(club, Iformation) {
     this.club = club;
-    this.tier = tier;
+    this.Iformation = Iformation;
     this.positions = [];
-    this.putInFormation()
+    this.putInFormation();
     // GK = new Card("GK");
     // LE = new Card("LE");
     // ZGE = new Card("ZGE");
@@ -32,18 +32,11 @@ export class LineUp {
   }
 
   putInFormation() {
-
-    if(Iformation == db.formations.name){
-      
-      for (var i = 0; i < db.formations.lines; i++) {
-        for (var j = 0; j < db.lines[i].length; j++) {
-          const genCard = new Card(j)
-          this.positions.push(genCard)
-        }
+    for (const formation of Object.values(db.formations)) {
+      for (let j = 0; j < formation; j++) {
+        const genCard = new Card(j);
+        this.positions.push(genCard);
       }
     }
   }
 }
-
-
-
