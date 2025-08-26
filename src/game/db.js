@@ -194,18 +194,14 @@ export const positions = [
 export const formations = [
   {
     name: "433",
-    "433": ["PE", "CA", "PD", "MC", "MC", "MC", "LE", "ZG", "ZG", "LD"],
+    lines:["PE", "CA", "PD", "MC", "MC", "MC", "LE", "ZG", "ZG", "LD"],
     img: "./links/exp/433.png",
   },
-  // { 
-  //   name: "442",
-  //   img: "./links/exp/442.png",
-  //   lines: [
-  //     ["CA", "CA"],
-  //     ["ME", "MC", "MC", "MD"],
-  //     ["LE", "ZG", "ZG", "LD"],
-  //   ],
-  // },
+  {
+    name: "442",
+    img: "./links/exp/442.png",
+    lines: ["CA", "CA", "ME", "MC", "MC", "MD", "LE", "ZG", "ZG", "LD"],
+  },
   // {
   //   name: "4231",
   //   img: "./links/exp/4231.png",

@@ -6,7 +6,7 @@ export class LineUp {
     this.club = club;
     this.Iformation = Iformation;
     this.positions = [];
-    this.putInFormation();
+    this.genFormation();
     // GK = new Card("GK");
     // LE = new Card("LE");
     // ZGE = new Card("ZGE");
@@ -31,12 +31,18 @@ export class LineUp {
     // PL = new Card("PL");
   }
 
-  putInFormation() {
-    for (const formation of Object.values(db.formations)) {
-      for (let j = 0; j < formation; j++) {
-        const genCard = new Card(j);
-        this.positions.push(genCard);
-      }
-    }
-  }
-}
+  genFormation() {
+
+    const findFormation = db.formations.find(key => key.name == this.Iformation)
+    const lines = findFormation.lines
+    lines.forEach(position => {
+      
+      const genCard = new Card(position);
+      this.positions.push(genCard);
+    });
+    console.log(this.positions)
+  } 
+}  
+   
+ 
+    

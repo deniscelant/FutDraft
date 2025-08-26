@@ -13,7 +13,10 @@ import * as sim from "/src/game/sim.js"
 import * as tactics from "/src/game/tactics.js"
 import { randomArrayIndex } from "./utils/random.js"
  
-const nlineup = new LineUp(utils.randomArrayIndex(db.clubs), db.formations[Math.floor(Math.random() * db.formations.length)].name)
-console.log(nlineup) 
+const formationValues = Object.values(db.formations) 
+const formationLines = formationValues[Math.floor(Math.random() * formationValues.length)].name  //433 ou 422
+
+const randomlineup = new LineUp(utils.randomArrayIndex(db.clubs), formationLines) 
+// console.log(nlineup) 
  
-  
+   
