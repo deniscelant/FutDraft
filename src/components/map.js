@@ -3,8 +3,6 @@ import { LineUp } from "/src/components/lineup.js";
 
 export class Map {
   constructor(Iformation) {
-    this.lines = db.formations[0].lines;
-
     this.lineUp = new LineUp()
     // this.GK = db.empty;
     // this.LE = db.empty;

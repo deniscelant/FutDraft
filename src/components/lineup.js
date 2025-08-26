@@ -40,9 +40,8 @@ export class LineUp {
       const genCard = new Card(position);
       this.positions.push(genCard);
     });
-    console.log(this.positions)
+    // console.log(this.positions)
   } 
 }  
    
  
-    

@@ -1,6 +1,7 @@
 import * as lineup from "/src/components/lineup.js"
 import {LineUp} from "/src/components/lineup.js"
 import * as card from "/src/components/card.js"
+import {Card} from "/src/components/card.js"
 import * as map from "/src/components/map.js"
 import * as window from "/src/components/window.js"
 import * as button from "/src/components/button.js"
@@ -17,6 +18,7 @@ const formationValues = Object.values(db.formations)
 const formationLines = formationValues[Math.floor(Math.random() * formationValues.length)].name  //433 ou 422
 
 const randomlineup = new LineUp(utils.randomArrayIndex(db.clubs), formationLines) 
-// console.log(nlineup) 
- 
+
+randomlineup.positions[0] = new Card("ZG") 
+console.log(randomlineup) 
    
