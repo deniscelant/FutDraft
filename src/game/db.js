@@ -10,7 +10,7 @@ export const clubs = [
     tier: "S",
   },
   {
-    club: "Manchester city",
+    club: "Liverpool",
     league: "Premier League",
     tier: "S",
   },

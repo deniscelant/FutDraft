@@ -2,30 +2,7 @@ class GameSaves {
   constructor() {
     this.step = 0;
     this.formation = "";
-    this.lineup = {
-      GK,
-      LE,
-      ZGE,
-      ZGC,
-      ZGD,
-      LD,
-      ADE,
-      MDE,
-      VOL,
-      MDD,
-      ADD,
-      ME,
-      MCE,
-      MC,
-      MCD,
-      MD,
-      MOE,
-      MO,
-      MOD,
-      PLE,
-      PLD,
-      PL,
-    };
+    this.lineup = {};
   }
 
   continueGame() {
