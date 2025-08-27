@@ -18,4 +18,3 @@ const formationLines = formationValues[Math.floor(Math.random() * formationValue
 
 const randomlineup = new LineUp(utils.randomArrayIndex(db.clubs), formationLines) 
 
-    
