@@ -2,19 +2,20 @@
   "name": "futdraft",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/deniscelant/FutDraft#readme",
-  "bugs": {
-    "url": "https://github.com/deniscelant/FutDraft/issues"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/deniscelant/FutDraft.git"
   },
-  "license": "ISC",
+  "keywords": [],
   "author": "",
+  "license": "ISC",
   "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "bugs": {
+    "url": "https://github.com/deniscelant/FutDraft/issues"
+  },
+  "homepage": "https://github.com/deniscelant/FutDraft#readme"
 }

@@ -9,4 +9,3 @@
 //   utils.randomArrayIndex(db.clubs),
 //   formationLines
 // );
-
