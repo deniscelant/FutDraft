@@ -1,3 +1,0 @@
-function renderMainView(){
-    const logo = 
-}

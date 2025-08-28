@@ -4,33 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FutDraft</title>
-    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="formation-styles.css" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
-    <header>
-
-      <img src="links/exp/futdraft.png"  alt="">
-    </header>
-
-    <h1 id="demo"></h1>
-    <div id="lineUpBox">
-      <div class="LineUp">
-        <div id="attackDiv" class="lineDivision"></div>
-        <div id="midAttackDiv" class="lineDivision"></div>
-        <div id="midDiv" class="lineDivision"></div>
-        <div id="midDefDiv" class="lineDivision"></div>
-        <div id="defDiv" class="lineDivision"></div>
-      </div>
-    </div>
-    <div id="cardBox"></div>
-
     <script type="module" src="src/app.js"></script>
+    <div id="root"></div>
+    <script type="text/babel">
+      import MainView from "./ui/mainView";
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<MainView />);
+    </script>
   </body>
 </html>
+  
