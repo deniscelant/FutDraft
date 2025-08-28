@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/deniscelant/FutDraft/issues"
   },
-  "homepage": "https://github.com/deniscelant/FutDraft#readme"
+  "homepage": "https://github.com/deniscelant/FutDraft#readme",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.3"
+  }
 }
