@@ -1,5 +1,5 @@
 // dentro de src/components/card.js
-import * as db from "../game/db.js";
+import * as db from "./db.js";
 
 
 export function overNumber(min, max) {

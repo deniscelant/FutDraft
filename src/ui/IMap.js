@@ -1,1 +1,0 @@
-LineUp.ZG = new Card(basics, position, stats);
