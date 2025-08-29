@@ -13,13 +13,21 @@ export default class GameSaves {
       },
     ];
     
-    this.lastDraft = this.gameSaves[this.gameSaves.length - 1];
+    this.last = this.gameSaves.length -1;
   }
 
   static continueGame() {
-    this.step = this.lastDraft.step;
-    this.formation = this.lastDraft.formation;
-    this.lineup = this.lastDraft.lineup; 
+    if(this.gameSaves.length <= 1){
+
+      this.step = this.gameSaves.step;
+      this.formation = this.gameSaves.formation;
+      this.lineup = this.gameSaves.lineup; 
+    } else{
+      
+      this.step = this.gameSaves[this.last].step;
+      this.formation = this.gameSaves[this.last].formation;
+      this.lineup = this.gameSaves[this.last].lineup; 
+    }
   }
 
   static newGame() {
