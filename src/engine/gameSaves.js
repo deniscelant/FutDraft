@@ -12,38 +12,35 @@ export default class GameSaves {
         lineup: {},
       },
     ];
-    
-    this.last = this.gameSaves.length -1;
+
+    this.last = this.gameSaves.length - 1;
   }
 
-  static continueGame() {
-    if(this.gameSaves.length <= 1){
-
+  continueGame() {
+    if (this.gameSaves.length == 1) {
       this.step = this.gameSaves.step;
       this.formation = this.gameSaves.formation;
-      this.lineup = this.gameSaves.lineup; 
-    } else{
-      
+      this.lineup = this.gameSaves.lineup;
+    } else {
       this.step = this.gameSaves[this.last].step;
       this.formation = this.gameSaves[this.last].formation;
-      this.lineup = this.gameSaves[this.last].lineup; 
+      this.lineup = this.gameSaves[this.last].lineup;
     }
   }
 
-  static newGame() {
+  newGame() {
     this.step = 0;
     this.formation = "";
-    this.lineup = 0; 
+    this.lineup = 0;
   }
 
-  static loadGame(selected) {
-    if(selected == this.gameSaves.draft){
-      
+  loadGame(selected) {
+    if (selected == this.gameSaves.draft) {
       this.step = this.gameSaves.step;
       this.formation = this.gameSaves.formation;
-      this.lineup = this.gameSaves.lineup; 
+      this.lineup = this.gameSaves.lineup;
     }
   }
 }
 
-
+export const gameSave = new GameSaves()

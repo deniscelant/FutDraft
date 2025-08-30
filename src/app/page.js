@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Button from "@/components/button";
-import GameSaves from "@/engine/gameSaves";
+import { gameSave } from "@/engine/gameSaves";
 
 export default function Home() {
   return (
@@ -13,15 +13,14 @@ export default function Home() {
           alt="FutDraft"
           width={500}
           height={500}
-          style={{ width: "200px",height: "auto" }}
+          style={{ width: "200px", height: "auto" }}
           priority
         />
-        <Button
-          method={GameSaves.continueGame()}
-        >
-          {
-            <h1>Continue</h1>
-          }
+        <Button method={gameSave.continueGame()}>
+          Continue
+        </Button>
+        <Button method={gameSave.continueGame()}>
+          Continue
         </Button>
       </main>
     </div>
