@@ -1,3 +1,4 @@
+import renderScenario from "./scenario";
 import Scenario from "./scenario";
 
 export default class GameSaves {
@@ -23,14 +24,17 @@ export default class GameSaves {
   continueGame() {
     if (this.gameSaves.length == 1) {
       this.step = this.gameSaves.step;
+      this.scenario = this.gameSaves.scenario;
       this.formation = this.gameSaves.formation;
       this.lineup = this.gameSaves.lineup;
+      renderScenario(this.scenario);
     } else {
       this.step = this.gameSaves[this.last].step;
+      this.scenario = this.gameSaves[this.last].scenario;
       this.formation = this.gameSaves[this.last].formation;
       this.lineup = this.gameSaves[this.last].lineup;
+      renderScenario(this.scenario);
     }
-    const scenario = new Scenario(this.step)
   }
 
   newGame() {
@@ -38,6 +42,7 @@ export default class GameSaves {
     this.formation = "";
     this.scenario = "ChooseFormation";
     this.lineup = 0;
+    renderScenario(this.scenario);
   }
 
   loadGame(selected) {
@@ -45,8 +50,9 @@ export default class GameSaves {
       this.step = this.gameSaves.step;
       this.formation = this.gameSaves.formation;
       this.lineup = this.gameSaves.lineup;
+      renderScenario(this.scenario);
     }
   }
 }
 
-export const gameSave = new GameSaves()
+export const gameSave = new GameSaves();

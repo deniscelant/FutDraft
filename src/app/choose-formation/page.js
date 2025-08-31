@@ -4,7 +4,6 @@ import Image from "next/image";
 export default function ChooseFormation() {
   return (
     <main>
-      {db.formations.forEach((f) => {
         <div>
           <h1>{f.name}</h1>
           <Image
@@ -16,7 +15,9 @@ export default function ChooseFormation() {
             priority
           />
         </div>;
-      })}
     </main>
   );
 }
+
+      // {db.formations.forEach((f) => {
+      // })}
