@@ -1,14 +1,17 @@
+import Scenario from "./scenario";
+
 export default class GameSaves {
   constructor() {
     this.step = 0;
     this.formation = "";
+    this.scenario = "";
     this.lineup = {};
     this.gameSaves = [
       {
         draft: 1,
         date: "22/08/2025",
         step: 4,
-        scenario: 3,
+        scenario: "ChooseFormation",
         formation: "433",
         lineup: {},
       },
@@ -27,11 +30,13 @@ export default class GameSaves {
       this.formation = this.gameSaves[this.last].formation;
       this.lineup = this.gameSaves[this.last].lineup;
     }
+    const scenario = new Scenario(this.step)
   }
 
   newGame() {
     this.step = 0;
     this.formation = "";
+    this.scenario = "ChooseFormation";
     this.lineup = 0;
   }
 
