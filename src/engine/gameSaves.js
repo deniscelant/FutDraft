@@ -8,6 +8,7 @@ export default class GameSaves {
         draft: 1,
         date: "22/08/2025",
         step: 4,
+        scenario: 3,
         formation: "433",
         lineup: {},
       },

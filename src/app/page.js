@@ -16,12 +16,9 @@ export default function Home() {
           style={{ width: "200px", height: "auto" }}
           priority
         />
-        <Button method={gameSave.continueGame()}>
-          Continue
-        </Button>
-        <Button method={gameSave.continueGame()}>
-          Continue
-        </Button>
+        <Button method={gameSave.continueGame()} text = {"Continue"}/>
+        <Button method={gameSave.newGame()} text = {"Novo Jogo"}/>
+        <Button method={gameSave.loadGame()} text = {"Carregar Jogo"}/>
       </main>
     </div>
   );
