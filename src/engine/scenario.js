@@ -1,8 +1,8 @@
-import ChooseFormation from "@/app/choose-formation/page"
-import { gameSave } from "./gameSaves"
+import ChooseFormation from "@/app/choose-formation/page";
+import { gameSave } from "./gameSaves";
 import Link from "next/link";
 
-// export default class Scenario{
+// export class Scenario{
 //     constructor(scenario){
 //         this.scenario = scenario;
 //         this.scenarioTypes = [{
@@ -27,15 +27,7 @@ import Link from "next/link";
 //     }
 // }
 
-export default function renderScenario(scenario){
-        if(scenario == "ChooseFormation"){
-             return <Link href="/choose-formation"></Link>
-        }
-        if(scenario == "SquadBuilder"){
-             return <Link href="/squad-builder"></Link>
-        }
-        if(scenario == "Championship"){
-             return <Link href="/championship"></Link>
+export default function renderScenario(scenario) {
+  return <Link href={scenario}></Link>;
+}
 
-        }
-    }
