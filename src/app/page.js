@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Button from "@/components/button";
 import { gameSave } from "@/engine/gameSaves";
+import LoadButton from "@/components/button";
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
           style={{ width: "200px", height: "auto" }}
           priority
         />
-        <Button method={gameSave.continueGame()} text = {"Continue"}/>
-        <Button method={gameSave.newGame()} text = {"Novo Jogo"}/>
-        <Button method={gameSave.loadGame()} text = {"Carregar Jogo"}/>
+        <LoadButton
+        id={"Novo Jogo"}
+        ></LoadButton>
       </main>
     </div>
   );

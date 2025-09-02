@@ -1,33 +1,42 @@
-import renderScenario from "./scenario";
 import Scenario from "./scenario";
 
 export default class GameSaves {
-  constructor(step, formation, scenario, lineup) {
-    this.step = step;
-    this.formation = formation;
-    this.scenario = scenario;
-    this.lineup = lineup;
+  constructor() {
+    this.step = 0;
+    this.formation = "";
+    this.scenario = "";
+    this.lineup = {};
+    this.gameSaves = [
+      {
+        draft: 1,
+        date: "22/08/2025",
+        step: 4,
+        scenario: "",
+        formation: "433",
+        lineup: {},
+      },
+    ];
+
+    this.last = this.gameSaves.length - 1;
   }
 
-  static continueGame() {
-    return new GameSaves(
-      gameSaves[this.last].step, 
-
-    )
-    this.step = this.gameSaves[this.last].step;
-    this.scenario = this.gameSaves[this.last].scenario;
-    this.formation = this.gameSaves[this.last].formation;
-    this.lineup = this.gameSaves[this.last].lineup;
-    renderScenario(this.scenario);
+  continueGame() {
+    if (this.gameSaves.length == 1) {
+      this.step = this.gameSaves.step;
+      this.formation = this.gameSaves.formation;
+      this.lineup = this.gameSaves.lineup;
+    } else {
+      this.step = this.gameSaves[this.last].step;
+      this.formation = this.gameSaves[this.last].formation;
+      this.lineup = this.gameSaves[this.last].lineup;
+    }
   }
 
   newGame() {
     this.step = 0;
     this.formation = "";
-    this.scenario = "ChooseFormation";
+    this.scenario = "choose-formation";
     this.lineup = 0;
-    renderScenario(this.scenario);
-    console.log("Novo jogo");
   }
 
   loadGame(selected) {
@@ -35,23 +44,8 @@ export default class GameSaves {
       this.step = this.gameSaves.step;
       this.formation = this.gameSaves.formation;
       this.lineup = this.gameSaves.lineup;
-      renderScenario(this.scenario);
     }
   }
 }
 
-let gameSaves = [
-  {
-    draft: 1,
-    date: "22/08/2025",
-    step: 4,
-    scenario: "ChooseFormation",
-    formation: "433",
-    lineup: {},
-  },
-];
-
-const last = this.gameSaves.length - 1;
-
-
-export const gameSave = new GameSaves();
+export const gameSave = new GameSaves()
