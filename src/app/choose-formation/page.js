@@ -1,6 +1,8 @@
 import FormationWindow from "@/components/formationWindow";
 import * as db from "@/engine/db.js";
 import Image from "next/image";
+import { Iformation } from "@/engine/db";
+
 
 export default function ChooseFormation() {
   return (

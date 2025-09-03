@@ -191,6 +191,9 @@ export const positions = [
   },
 ];
 
+export const setFormation = {
+  formation: null
+};
 export const formations = [
   {
     name: "433",
