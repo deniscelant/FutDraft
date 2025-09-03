@@ -195,11 +195,11 @@ export const formations = [
   {
     name: "433",
     lines:["PE", "CA", "PD", "MC", "MC", "MC", "LE", "ZG", "ZG", "LD"],
-    img: "/public/433.png",
+    img: "/433.png",
   },
   {
     name: "442",
-    img: "/public/442.png",
+    img: "/442.png",
     lines: ["CA", "CA", "ME", "MC", "MC", "MD", "LE", "ZG", "ZG", "LD"],
   },
   // {
