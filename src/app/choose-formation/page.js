@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ChooseFormation() {
   return (
-    <main>
+    <div>
       {db.formations.map((f) => (
         <FormationWindow
           key={f.name}
@@ -12,6 +12,6 @@ export default function ChooseFormation() {
           img={f.img}
         />
       ))}
-    </main>
+    </div>
   );
 }

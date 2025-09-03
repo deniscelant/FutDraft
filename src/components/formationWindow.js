@@ -11,6 +11,7 @@ export default function FormationWindow({name, img}) {
         height={500}
         style={{ width: "200px", height: "auto" }}
         priority
+        onClick={chooseFormation}
       />
     </div>
   );
