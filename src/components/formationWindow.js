@@ -3,13 +3,13 @@ import Link from "next/link";
 import { setFormation } from "@/engine/db";
 
 export default function FormationWindow({ name, img }) {
-  function handleClick() {
-    setFormation.formation = name; // grava direto no módulo
-  }
+  // function handleClick() {
+  //   setFormation.formation = name; // grava direto no módulo
+  // }
 
   return (
-    <Link href="squad-builder"  >
-      <div onClick={handleClick}>
+    <Link href=''  >
+      <div>
         <h1>{name}</h1>
         <Image
           src={img}
