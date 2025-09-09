@@ -1,8 +1,9 @@
+'use client'
+
 import FormationWindow from "@/components/formationWindow";
 import * as db from "@/engine/db.js";
-import Image from "next/image";
-import { Iformation } from "@/engine/db";
-
+import SquadBuilder from "../squad-builder/page";
+import { useSearchParams } from 'next/navigation'
 
 export default function ChooseFormation() {
   return (

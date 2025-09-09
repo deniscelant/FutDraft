@@ -8,7 +8,7 @@ export default function FormationWindow({ name, img }) {
   // }
 
   return (
-    <Link href=''  >
+    <Link href={`/squad-builder?lineup=${name}`}>
       <div>
         <h1>{name}</h1>
         <Image

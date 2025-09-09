@@ -1,5 +1,5 @@
-import { Card } from "/src/components/card.js";
-import * as db from "/src/game/db.js";
+import { Card } from "@/engine/card.js";
+import * as db from "@/engine/db.js";
 
 export class LineUp {
   constructor(club, Iformation) {
