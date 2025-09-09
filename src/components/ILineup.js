@@ -8,8 +8,8 @@ export default function ILineUp() {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("lineup");
-  
-  const lineup = new LineUp("", search);
+  const stringSearch = search.toString()
+  const lineup = new LineUp("", stringSearch);
   return (
     <main>
       {lineup.positions.map((card, index) => (

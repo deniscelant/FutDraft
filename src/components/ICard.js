@@ -1,4 +1,4 @@
-export default function ICard(Icard) {
+export default function ICard({Icard}) {
   return (
     <div id="card">
       <div id="playerCore">
@@ -6,6 +6,7 @@ export default function ICard(Icard) {
           <h1 id="playerName">{Icard.name}</h1>
           <p>{Icard.nation}</p>
           <p>{Icard.club}</p>
+          <p>{Icard.position}</p>
         </div>
       </div>
       <div id="info">

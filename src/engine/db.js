@@ -205,16 +205,17 @@ export const formations = [
     img: "/442.png",
     lines: ["CA", "CA", "ME", "MC", "MC", "MD", "LE", "ZG", "ZG", "LD"],
   },
-  // {
-  //   name: "4231",
-  //   img: "/public/4231.png",
-  //   lines: [
-  //     ["CA"],
-  //     ["ME", "MEI", "MD"],
-  //     ["MC", "MC"],
-  //     ["LE", "ZG", "ZG", "LD"],
-  //   ],
-  // },
+  {
+    name: "4231",
+    img: "/4231.png",
+    lines: ["CA", "ME", "MEI", "MD", "MC", "MC", "LE", "ZG", "ZG", "LD"],
+  },
+  {
+    name: "532",
+    img: "/532.png",
+    lines: ["CA", "CA", "MC", "MC", "MC", "LE", "ZG", "ZG", "ZG", "LD"],
+  },
+
   // {
   //   name: "532",
   //   img: "/public/532.png",
