@@ -1,0 +1,2 @@
+// Impact
+export let force;
