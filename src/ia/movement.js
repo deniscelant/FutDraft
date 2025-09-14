@@ -24,5 +24,5 @@ while pParam !== tParam{
 
 class withBallMoveTo
 holdBallShape{ area:1x1, offset:1px+playerPosition, condition:force < 10}
-controlBall{offset: vel + x || y, direction: playerPivot}
+moveBall{offset: vel + x || y, direction: playerPivot}
 */
