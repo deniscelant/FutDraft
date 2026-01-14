@@ -1,5 +1,4 @@
-// dentro de src/components/card.js
-import * as db from "./db.js";
+import * as db from "../config/db.js";
 
 
 export function overNumber(min, max) {
@@ -8,7 +7,7 @@ export function overNumber(min, max) {
   return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
 }
 
-export class Card {
+export class CardAttributes {
   constructor(position, tier) {
     this.position = position;
     this.name = db.names[Math.floor(Math.random() * db.names.length)];

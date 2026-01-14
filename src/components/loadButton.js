@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {gameSave} from "@/engine/gameSaves";
+import {gameSave} from "@/config/gameSaves";
 
 export default function LoadButton({ id }) {
   let url;

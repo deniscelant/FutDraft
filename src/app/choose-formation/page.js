@@ -1,7 +1,7 @@
 'use client'
 
 import FormationWindow from "@/components/formationWindow";
-import * as db from "@/engine/db.js";
+import * as db from "@/config/db.js";
 import SquadBuilder from "../squad-builder/page";
 import { useSearchParams } from 'next/navigation'
 

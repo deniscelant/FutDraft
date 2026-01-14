@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { gameSave } from "@/engine/gameSaves";
-import LoadButton from "@/components/button";
+import { gameSave } from "@/config/gameSaves";
+import LoadButton from "@/components/loadButton";
 export default function Home() {
   return (
     <div className={styles.page}>

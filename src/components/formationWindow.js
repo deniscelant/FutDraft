@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { setFormation } from "@/engine/db";
+import { setFormation } from "@/config/db";
 
 export default function FormationWindow({ name, img }) {
   // function handleClick() {

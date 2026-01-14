@@ -1,0 +1,3 @@
+tela inicial apresenta o logo e botões de menu: continuar (se existir save), novo jogo e carregar.
+iniciando um novo jogo o usuário é apresentado à 5 formações aleatórias. (clicando) em uma delas,
+é carregado a formação escolhida, com cartões vazios em cada posição

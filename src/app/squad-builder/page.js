@@ -1,11 +1,11 @@
 
-import ILineUp from "@/components/ILineup";
+import RenderLineup from "@/ui/renderLineup";
 
 export default function SquadBuilder() {
   
   return (
     <main>
-      <ILineUp ></ILineUp>
+      <RenderLineup ></RenderLineup>
     </main>
   );
 }
