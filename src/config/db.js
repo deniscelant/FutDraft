@@ -197,13 +197,13 @@ export const setFormation = {
 export const formations = [
   {
     name: "433",
-    lines:["PE", "CA", "PD", "MC", "MC", "MC", "LE", "ZG", "ZG", "LD"],
+    lines:["PE", "CA", "PD", "MCE", "MC", "MCD", "LE", "ZGE", "ZGD", "LD"],
     img: "/433.png",
   },
   {
     name: "442",
     img: "/442.png",
-    lines: ["CA", "CA", "ME", "MC", "MC", "MD", "LE", "ZG", "ZG", "LD"],
+    lines: ["CA", "CA", "ME", "MCE", "MC", "MD", "LE", "ZG", "ZG", "LD"],
   },
   {
     name: "4231",

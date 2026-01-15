@@ -11,10 +11,10 @@ export default function RenderLineup() {
   const stringSearch = search.toString()
   const lineup = new Lineup(stringSearch);
   return (
-    <main>
+    <div>
       {lineup.positions.map((index) => (
         <RenderCard key={index}/>
       ))}
-    </main>
+    </div>
   );
 }

@@ -14,8 +14,7 @@ export class Lineup {
     const lines = findFormation.lines
     lines.forEach(position => {
       
-      const pushCardAttributes = new CardAttributes(position);
-      this.positions.push(pushCardAttributes);
+      this.positions.push(position);
     });
   } 
 }  
