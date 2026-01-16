@@ -1,4 +1,3 @@
-import { CardAttributes } from "@/config/cardAttributes.js";
 import * as db from "@/config/db.js";
 
 export class Lineup {

@@ -8,7 +8,7 @@ export function overNumber(min, max) {
 }
 
 export class CardAttributes {
-  constructor(position, tier) {
+  constructor(position) {
     this.position = position;
     this.name = db.names[Math.floor(Math.random() * db.names.length)];
     this.nation = db.nations[Math.floor(Math.random() * db.nations.length)];

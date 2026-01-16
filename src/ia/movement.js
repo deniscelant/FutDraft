@@ -7,6 +7,20 @@ export class moveTO{
     }
 }
 
+/*
+Player Interface = [
+ballPosition
+ballOwnerPosition
+fieldArea
+playerPosition
+futurePoint
+ballControl
+sprint
+pass
+shoot
+lob
+]
+*/ 
 
 
 /*

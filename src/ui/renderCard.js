@@ -2,24 +2,9 @@ import React from "react";
 import { CardAttributes } from "@/config/cardAttributes";
 import { useState } from "react";
 
-export default function RenderCard({ stats, click }) {
-  stats = {
-    name: "",
-    nation: "",
-    club: "",
-    position: "",
-    pass: null,
-    dribble: null,
-    desarm: null,
-    shoot: null,
-    pace: null,
-    resistance: null,
-    impulse: null,
-    strength: null,
-  };
-
+export default function RenderCard({ stats={}, click }) {
   return (
-    <div id="card" onClick={click}>
+    <div className={stats.position} id="card" onClick={click}>
       <div id="playerCore">
         <div className="playerInfo">
           <h1 id="name">{stats.name}</h1>
